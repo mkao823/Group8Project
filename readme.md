@@ -1,5 +1,5 @@
 # Project Name
-- Name (@username)
+- Hetal Halani (@hetalhalani)
 - Jonathan Lei (@JonathanL159)
 - Michael (@mkao823)
 - William Tran (@williamtran955)
