@@ -55,5 +55,20 @@
   1. Ut enim ad minim veniam, quis nostrum e
   2. Ut enim ad minim veniam, quis nostrum e
   3. ...
-2. Use Case Name (Should match functional requirement name)
-   ...
+2. Use Case Name (Add to cart)
+	**Pre-condition:** 
+	   Must have an account
+	   Customer must be logged in
+	**Trigger:**
+	   Customer selects add to cart option   
+   	**Primary Sequence:**
+		1. Customer views services that can be purchased
+		2. Customer selects and views the service 
+		3. After selecting, system provides avaiability and cost of service
+		4. Customer can select to add to cart 
+		5. System stores the customers selection in cart
+	**Primary Postconditions:**
+		1. The customer's cart holds the service(s) that they have selected
+	**Alternate Sequence**
+		1. The customer leaves the webpage and the customers cart will be saved to their profile
+	 
