@@ -22,37 +22,33 @@
 
 ## Use Cases
 
-1. Use Case Name (Should match functional requirement name)
-- **Pre-condition:** <can be a list or short description> Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
+1. User profile
+- **Pre-condition:** <can be a list or short description> user must have a registered account.
 
-- **Trigger:** <can be a list or short description> Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. 
+- **Trigger:** <can be a list or short description> website user clicks on the username or userprofile icon. 
 
 - **Primary Sequence:**
   
-  1. Ut enim ad minim veniam, quis nostrum e
-  2. Et sequi incidunt 
-  3. Quis aute iure reprehenderit
-  4. ... 
-  5. ...
-  6. ...
-  7. ...
-  8. ...
-  9. ...
-  10. <Try to stick to a max of 10 steps>
-
-- **Primary Postconditions:** <can be a list or short description> 
+  1. Website user views the services that are provided
+  2. Website user clicks on the service they like
+  3. Website user clicks on the username of the user for more information on them
+  4. Website shows a page with information on the user
+   
 
 - **Alternate Sequence:** <you can have more than one alternate sequence to describe multiple issues that may arise>
   
-  1. Ut enim ad minim veniam, quis nostrum e
-  2. Ut enim ad minim veniam, quis nostrum e
-  3. ...
+  1. Website user uses the search bar to search username
+  2. Website user clicks on the username
+  3. Website shows a page with information on the user
+
+
+2. Use Case Name (Should match functional requirement name)
+   ...
 
 - **Alternate Sequence <optional>:** <you can have more than one alternate sequence to describe multiple issues that may arise>
   
   1. Ut enim ad minim veniam, quis nostrum e
   2. Ut enim ad minim veniam, quis nostrum e
-michael_branch
   3. ...
 2. Use Case Name (Add to cart)
 	**Pre-condition:** 
@@ -74,5 +70,3 @@ michael_branch
 
 
 
- 
-main
