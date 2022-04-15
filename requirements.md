@@ -17,10 +17,10 @@
 
 ## Non-functional Requirements
 
-1. non-functional
-2. non-functional
-3. non-functional
-4. non-functional
+1. Sellers should be notified of a new job
+2. Webpage should load quickly to show that it is not unresponsive
+3. Users should not be able to see others' transactions
+4. Users can set links to other sites on their profile
 
 ## Use Cases
 
