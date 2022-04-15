@@ -1,26 +1,24 @@
-## <remove all of the example text and notes in < > such as this one>
-
 ## Functional Requirements
 
-1. requirement
-2. requirement
-3. requirement
-4. requirement
-5. requirement
-6. requirement
-7. requirement
-8. requirement
-9. requirement
-10. requirement
-11. requirement
-12. requirement
+1. Login
+2. Logout
+3. Create new account
+4. Delete account
+5. User ratings
+6. User profile
+7. Splash page
+8. Add pictures for items
+9. Find item
+10. Add to cart
+11. See all items available from all of the sellers
+12. Filter by categories
 
 ## Non-functional Requirements
 
-1. non-functional
-2. non-functional
-3. non-functional
-4. non-functional
+1. Sellers should be notified of a new job
+2. Webpage should load quickly to show that it is not unresponsive
+3. Users should not be able to see others' transactions
+4. Users can set links to other sites on their profile
 
 ## Use Cases
 
@@ -54,7 +52,7 @@
   
   1. Ut enim ad minim veniam, quis nostrum e
   2. Ut enim ad minim veniam, quis nostrum e
-  3. ...
+
 2. Add to cart
 	**Pre-condition:** 
 	   Must have an account
@@ -84,3 +82,4 @@
 	**Primary Postconditions:**
 		1. All services from all sellers are displayed for customer to see
 	     	 
+	
