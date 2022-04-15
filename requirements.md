@@ -1,17 +1,17 @@
 ## Functional Requirements
 
-1. Login
-2. Logout
-3. Create new account
-4. Delete account
-5. User ratings
-6. User profile
-7. Splash page
-8. Add pictures for items
-9. Find item
-10. Add to cart
-11. See all items available from all of the sellers
-12. Filter by categories
+1. Login (Hetal)
+2. Logout (Jonathan)
+3. Create new account (Michael)
+4. Delete account (William)
+5. User ratings (Hetal)
+6. User profile (Jonathan)
+7. Splash page (Michael)
+8. Add pictures for items (William)
+9. Find item (Hetal)
+10. Add to cart (Jonathan)
+11. See all items available from all of the sellers (Michael)
+12. Filter by categories (William)
 
 ## Non-functional Requirements
 
@@ -54,4 +54,16 @@
   2. Ut enim ad minim veniam, quis nostrum e
 
 
- 
+6. Find item
+        **Pre-condition:**
+          Customer must type in keywords matching to service
+        **Trigger:**
+          Customer uses a search bar
+        **Primary Sequence:**
+                1. Customer clicks on the search bar
+                2. Customer types in keywords that match (similar words)
+                3. Page displays items
+        **Primary Postconditions:**
+                1. Page shows page with similar service
+        **Alternate Sequence:**
+                1. Page shows other services closely related
