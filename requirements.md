@@ -15,10 +15,10 @@
 
 ## Non-functional Requirements
 
-1. non-functional
-2. non-functional
-3. non-functional
-4. non-functional
+1. Sellers should be notified of a new job
+2. Webpage should load quickly to show that it is not unresponsive
+3. Users should not be able to see others' transactions
+4. Users can set links to other sites on their profile
 
 ## Use Cases
 
@@ -52,8 +52,29 @@
   
   1. Ut enim ad minim veniam, quis nostrum e
   2. Ut enim ad minim veniam, quis nostrum e
+michael_branch
+  3. ...
+2. Use Case Name (Add to cart)
+	**Pre-condition:** 
+	   Must have an account
+	   Customer must be logged in
+	**Trigger:**
+	   Customer selects add to cart option   
+   	**Primary Sequence:**
+		1. Customer views services that can be purchased
+		2. Customer selects and views the service 
+		3. After selecting, system provides avaiability and cost of service
+		4. Customer can select to add to cart 
+		5. System stores the customers selection in cart
+	**Primary Postconditions:**
+		1. The customer's cart holds the service(s) that they have selected
+	**Alternate Sequence**
+		1. The customer leaves the webpage and the customers cart will be saved to their profile
+	 
 
 
+
+<<<<<<< HEAD
 6. Find item
         **Pre-condition:**
           Customer must type in keywords matching to service
@@ -67,3 +88,7 @@
                 1. Page shows page with similar service
         **Alternate Sequence:**
                 1. Page shows other services closely related
+=======
+ 
+main
+>>>>>>> d27e8c0dbf28405f4d8b37530b4014838e73dc29
