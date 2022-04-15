@@ -55,7 +55,7 @@
   1. Ut enim ad minim veniam, quis nostrum e
   2. Ut enim ad minim veniam, quis nostrum e
   3. ...
-2. Use Case Name (Add to cart)
+2. Add to cart
 	**Pre-condition:** 
 	   Must have an account
 	   Customer must be logged in
@@ -71,4 +71,16 @@
 		1. The customer's cart holds the service(s) that they have selected
 	**Alternate Sequence**
 		1. The customer leaves the webpage and the customers cart will be saved to their profile
-	 
+3. See all services
+	**Pre-condition**
+	    Customer must have selected categories option
+	    System must have services available for sale
+	**Trigger**
+	   Customer selects option to show all items/services in categories section
+	**Primary Sequence**
+		1. Customer chooses categories tab that holds options to view services offered
+		2. Customer chooses to view all items from all sellers
+		3. System provides a gallery of all services provided from all sellers 
+	**Primary Postconditions:**
+		1. All services from all sellers are displayed for customer to see
+	     	 
