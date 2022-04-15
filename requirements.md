@@ -24,36 +24,34 @@
 
 ## Use Cases
 
-1. Use Case Name (Should match functional requirement name)
-- **Pre-condition:** <can be a list or short description> Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
+5. Visit Splash Page
+- **Pre-condition:** The site exists
 
-- **Trigger:** <can be a list or short description> Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. 
+- **Trigger:** A user visits the site
 
 - **Primary Sequence:**
   
-  1. Ut enim ad minim veniam, quis nostrum e
-  2. Et sequi incidunt 
-  3. Quis aute iure reprehenderit
-  4. ... 
-  5. ...
-  6. ...
-  7. ...
-  8. ...
-  9. ...
-  10. <Try to stick to a max of 10 steps>
+  1. A user visits the site
+  2. The site loads home bar
+  3. The site loads popular services available to buy
 
-- **Primary Postconditions:** <can be a list or short description> 
+- **Primary Postconditions:** The user can see the splash page 
 
-- **Alternate Sequence:** <you can have more than one alternate sequence to describe multiple issues that may arise>
-  
-  1. Ut enim ad minim veniam, quis nostrum e
-  2. Ut enim ad minim veniam, quis nostrum e
-  3. ...
+6. Filter by Categories
+- **Pre-condition:** Multiple services exist
 
-- **Alternate Sequence <optional>:** <you can have more than one alternate sequence to describe multiple issues that may arise>
-  
-  1. Ut enim ad minim veniam, quis nostrum e
-  2. Ut enim ad minim veniam, quis nostrum e
-  3. ...
-2. Use Case Name (Should match functional requirement name)
-   ...
+- **Trigger:** A user decides to serach services by category
+
+- **Primary Sequence:**
+
+  1. User clicks on categories
+  2. Site shows available filters
+  3. User clicks on category to fileter out or search for
+  4. Site shows services with all currently selected categories
+
+- **Primary Postconditions:** Services only with desired categories are shown   
+
+- **Alternative Sequence:**
+
+ 1. No services match the selected filters
+  - Site shows an error message and prompts user to go back to filters to change choices
