@@ -1,19 +1,17 @@
-## <remove all of the example text and notes in < > such as this one>
-
 ## Functional Requirements
 
-1. requirement
-2. requirement
-3. requirement
-4. requirement
-5. requirement
-6. requirement
-7. requirement
-8. requirement
-9. requirement
-10. requirement
-11. requirement
-12. requirement
+1. Login
+2. Logout
+3. Create new account
+4. Delete account
+5. User ratings
+6. User profile
+7. Splash page
+8. Add pictures for items
+9. Find item
+10. Add to cart
+11. See all items available from all of the sellers
+12. Filter by categories
 
 ## Non-functional Requirements
 
@@ -55,3 +53,21 @@
 
  1. No services match the selected filters
   - Site shows an error message and prompts user to go back to filters to change choices
+
+2. Use Case Name (Add to cart)
+	**Pre-condition:** 
+	   Must have an account
+	   Customer must be logged in
+	**Trigger:**
+	   Customer selects add to cart option   
+   	**Primary Sequence:**
+		1. Customer views services that can be purchased
+		2. Customer selects and views the service 
+		3. After selecting, system provides avaiability and cost of service
+		4. Customer can select to add to cart 
+		5. System stores the customers selection in cart
+	**Primary Postconditions:**
+		1. The customer's cart holds the service(s) that they have selected
+	**Alternate Sequence**
+		1. The customer leaves the webpage and the customers cart will be saved to their profile
+	 
