@@ -51,21 +51,23 @@
   		2. Site shows an error message and prompts user to go back to filters to change choices
 
 3. User profile
-	**Pre-condition:**
-	  user must have a registered account.
-	**Trigger:** 
-	  website user clicks on the username or userprofile icon. 
-	**Primary Sequence:** 
-  		1. Website user views the services that are provided
-  		2. Website user clicks on the service they like
-  		3. Website user clicks on the username of the user for more information on them
-  		4. Website shows a page with information on the user
- 	**Alternate Sequence:** 
-  		1. Website user uses the search bar to search username
-  		2. Website user clicks on the username
-  		3. Website shows a page with information on the user
+- **Pre-condition:** user must have a registered account.
 
+- **Trigger:** website user clicks on the username or userprofile icon. 
+
+- **Primary Sequence:**
+  
+  1. Website user views the services that are provided
+  2. Website user clicks on the service they like
+  3. Website user clicks on the username of the user for more information on them
+  4. Website shows a page with information on the user
+   
 4. Add to cart
+  1. Website user uses the search bar to search username
+  2. Website user clicks on the username
+  3. Website shows a page with information on the user
+
+5. Use Case Name (Add to cart)
 	**Pre-condition:** 
 	   Must have an account
 	   Customer must be logged in
@@ -81,8 +83,20 @@
 		1. The customer's cart holds the service(s) that they have selected
 	**Alternate Sequence**
 		1. The customer leaves the webpage and the customers cart will be saved to their profile
-	 
-5. Find item
+6. See all services
+	**Pre-condition**
+	    Customer must have selected categories option
+	    System must have services available for sale
+	**Trigger**
+	   Customer selects option to show all items/services in categories section
+	**Primary Sequence**
+		1. Customer chooses categories tab that holds options to view services offered
+		2. Customer chooses to view all items from all sellers
+		3. System provides a gallery of all services provided from all sellers 
+	**Primary Postconditions:**
+		1. All services from all sellers are displayed for customer to see
+	    
+7. Find item
         **Pre-condition:**
           Customer must type in keywords matching to service
         **Trigger:**
