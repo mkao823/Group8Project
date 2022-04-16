@@ -1,15 +1,14 @@
  ## Meetings
 
-### 2022-04-14 at 17:45pm
+### 2022-04-14 at 17:45
 - Team members attended - Hetal, Jonathan, Michael, William
 - Team Updates:
-  - <Hetal> worked on
-  - <Jonathan> worked on
-  - <Michael> worked on
-  - <William> worked on
+  - <Hetal> worked on use case (user profile)
+  - <Jonathan> worked on use case (find item)
+  - <Michael> worked on use case (see all items, add to cart)
+  - <William> worked on use case (splash page, filter by categories)
 
-- Summary:
-
+- Summary: Team worked on finishing up requriments.md file. Filling up use cases and functional/non-functional requirements.
 
 ### 2022-04-19 at 17:45
 - Team members attended -
