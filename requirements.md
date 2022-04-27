@@ -6,10 +6,10 @@
 4. Delete account (William)
 5. User ratings (Hetal)
 6. User profile (Jonathan)
-7. Splash page (Michael)
-8. Add pictures for items (William)
+7. Splash page (William)
+8. Add pictures for items (Michael)
 9. Find item (Hetal)
-10. Add to cart (Jonathan)
+10. Add to cart (Michael)
 11. See all items available from all of the sellers (Michael)
 12. Filter by categories (William)
 
