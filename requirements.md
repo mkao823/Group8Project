@@ -31,19 +31,11 @@
   		1. A user visits the site
   		2. The site loads home bar
   		3. The site loads popular services available to buy
-<<<<<<< HEAD
 	**Primary Postconditions:**
 		1. The user can see the splash page 
 
 2. Filter by Categories
-	**Pre-condition:**
-=======
-	**Primary Postconditions:** 
-		1. The user can see the splash page 
-
-2. Filter by Categories
 	**Pre-condition:** 
->>>>>>> dbc78239ae8647fc442c65197adf5cd9d1f36620
 	  Multiple services exist
 	**Trigger:**
 	  A user decides to serach services by category
@@ -53,17 +45,13 @@
   		3. User clicks on category to fileter out or search for
   		4. Site shows services with all currently selected categories
 	**Primary Postconditions:**
-<<<<<<< HEAD
 		1. Services only with desired categories are shown   
-=======
-	  Services only with desired categories are shown   
->>>>>>> dbc78239ae8647fc442c65197adf5cd9d1f36620
+	  	2. Services only with desired categories are shown   
 	**Alternative Sequence:**
  		1. No services match the selected filters
   		2. Site shows an error message and prompts user to go back to filters to change choices
 
 3. User profile
-<<<<<<< HEAD
 	**Pre-condition:**
 	  User must have a registered account.
 	**Trigger:**
@@ -79,25 +67,6 @@
   		3. Website shows a page with information on the user
 
 4. Add to cart
-=======
-- **Pre-condition:** user must have a registered account.
-
-- **Trigger:** website user clicks on the username or userprofile icon. 
-
-- **Primary Sequence:**
-  
-  1. Website user views the services that are provided
-  2. Website user clicks on the service they like
-  3. Website user clicks on the username of the user for more information on them
-  4. Website shows a page with information on the user
-   
-4. Add to cart
-  1. Website user uses the search bar to search username
-  2. Website user clicks on the username
-  3. Website shows a page with information on the user
-
-5. Use Case Name (Add to cart)
->>>>>>> dbc78239ae8647fc442c65197adf5cd9d1f36620
 	**Pre-condition:** 
 	   Must have an account
 	   Customer must be logged in
@@ -113,7 +82,8 @@
 		1. The customer's cart holds the service(s) that they have selected
 	**Alternate Sequence**
 		1. The customer leaves the webpage and the customers cart will be saved to their profile
-6. See all services
+
+5. See all services
 	**Pre-condition**
 	    Customer must have selected categories option
 	    System must have services available for sale
@@ -126,7 +96,7 @@
 	**Primary Postconditions:**
 		1. All services from all sellers are displayed for customer to see
 	    
-7. Find item
+6. Find item
         **Pre-condition:**
           Customer must type in keywords matching to service
         **Trigger:**
