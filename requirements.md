@@ -3,13 +3,13 @@
 1. Login (Hetal)
 2. Logout (Jonathan)
 3. Create new account (Michael)
-4. Delete account (William)
+4. Delete account (Michael)
 5. User ratings (Hetal)
 6. User profile (Jonathan)
-7. Splash page (Michael)
+7. Splash page (William)
 8. Add pictures for items (William)
 9. Find item (Hetal)
-10. Add to cart (Jonathan)
+10. Add to cart (Michael)
 11. See all items available from all of the sellers (Michael)
 12. Filter by categories (William)
 
@@ -46,7 +46,10 @@
   		4. Site shows services with all currently selected categories
 	**Primary Postconditions:**
 		1. Services only with desired categories are shown   
+<<<<<<< HEAD
 	  	2. Services only with desired categories are shown   
+=======
+>>>>>>> e4990ac3ae5ca886b0d8739d53794fb373cb1548
 	**Alternative Sequence:**
  		1. No services match the selected filters
   		2. Site shows an error message and prompts user to go back to filters to change choices
@@ -67,6 +70,22 @@
   		3. Website shows a page with information on the user
 
 4. Add to cart
+<<<<<<< HEAD
+=======
+	**Pre-condition:**
+	  User must have a registered account.
+
+	**Trigger:** 
+	  Website user clicks on the username or userprofile icon. 
+
+	**Primary Sequence:**
+  		1. Website user views the services that are provided
+  		2. Website user clicks on the service they like
+  		3. Website user clicks on the username of the user for more information on them
+  		4. Website shows a page with information on the user
+
+5. Use Case Name (Add to cart)
+>>>>>>> e4990ac3ae5ca886b0d8739d53794fb373cb1548
 	**Pre-condition:** 
 	   Must have an account
 	   Customer must be logged in
@@ -82,8 +101,13 @@
 		1. The customer's cart holds the service(s) that they have selected
 	**Alternate Sequence**
 		1. The customer leaves the webpage and the customers cart will be saved to their profile
+<<<<<<< HEAD
 
 5. See all services
+=======
+	
+6. See all services
+>>>>>>> e4990ac3ae5ca886b0d8739d53794fb373cb1548
 	**Pre-condition**
 	    Customer must have selected categories option
 	    System must have services available for sale
