@@ -1,17 +1,17 @@
 ## Functional Requirements
 
-1. Login
-2. Logout
-3. Create new account
-4. Delete account
-5. User ratings
-6. User profile
-7. Splash page
-8. Add pictures for items
-9. Find item
-10. Add to cart
-11. See all items available from all of the sellers
-12. Filter by categories
+1. Login (Hetal)
+2. Logout (Jonathan)
+3. Create new account (Michael)
+4. Delete account (Michael)
+5. User ratings (Hetal)
+6. User profile (Jonathan)
+7. Splash page (William)
+8. Add pictures for items (William)
+9. Find item (Hetal)
+10. Add to cart (Michael)
+11. See all items available from all of the sellers (Michael)
+12. Filter by categories (William)
 
 ## Non-functional Requirements
 
@@ -22,44 +22,69 @@
 
 ## Use Cases
 
-1. Use Case Name (Should match functional requirement name)
-- **Pre-condition:** <can be a list or short description> Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
+1. Visit Splash Page
+	**Pre-condition:**
+	  The site exists
+	**Trigger:**
+	  A user visits the site
+	**Primary Sequence:**
+  		1. A user visits the site
+  		2. The site loads home bar
+  		3. The site loads popular services available to buy
+	**Primary Postconditions:**
+		1. The user can see the splash page 
 
-- **Trigger:** <can be a list or short description> Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. 
+2. Filter by Categories
+	**Pre-condition:** 
+	  Multiple services exist
+	**Trigger:**
+	  A user decides to serach services by category
+	**Primary Sequence:**
+  		1. User clicks on categories
+  		2. Site shows available filters
+  		3. User clicks on category to fileter out or search for
+  		4. Site shows services with all currently selected categories
+	**Primary Postconditions:**
+		1. Services only with desired categories are shown   
+	**Alternative Sequence:**
+ 		1. No services match the selected filters
+  		2. Site shows an error message and prompts user to go back to filters to change choices
 
-- **Primary Sequence:**
-  
-  1. Ut enim ad minim veniam, quis nostrum e
-  2. Et sequi incidunt 
-  3. Quis aute iure reprehenderit
-  4. ... 
-  5. ...
-  6. ...
-  7. ...
-  8. ...
-  9. ...
-  10. <Try to stick to a max of 10 steps>
+3. User profile
+	**Pre-condition:**
+	  User must have a registered account.
+	**Trigger:**
+	  Website user clicks on the username or userprofile icon. 
+	**Primary Sequence:**
+  		1. Website user views the services that are provided
+  		2. Website user clicks on the service they like
+  		3. Website user clicks on the username of the user for more information on them
+  		4. Website shows a page with information on the user
+	**Alternate Sequence:**
+  		1. Website user uses the search bar to search username
+  		2. Website user clicks on the username
+  		3. Website shows a page with information on the user
 
-- **Primary Postconditions:** <can be a list or short description> 
+4. Add to cart
+	**Pre-condition:**
+	  User must have a registered account.
 
-- **Alternate Sequence:** <you can have more than one alternate sequence to describe multiple issues that may arise>
-  
-  1. Ut enim ad minim veniam, quis nostrum e
-  2. Ut enim ad minim veniam, quis nostrum e
-  3. ...
+	**Trigger:** 
+	  Website user clicks on the username or userprofile icon. 
 
-- **Alternate Sequence <optional>:** <you can have more than one alternate sequence to describe multiple issues that may arise>
-  
-  1. Ut enim ad minim veniam, quis nostrum e
-  2. Ut enim ad minim veniam, quis nostrum e
+	**Primary Sequence:**
+  		1. Website user views the services that are provided
+  		2. Website user clicks on the service they like
+  		3. Website user clicks on the username of the user for more information on them
+  		4. Website shows a page with information on the user
 
-2. Add to cart
+5. Use Case Name (Add to cart)
 	**Pre-condition:** 
 	   Must have an account
 	   Customer must be logged in
 	**Trigger:**
 	   Customer selects add to cart option   
-   	**Primary Sequence:**
+        **Primary Sequence:**
 		1. Customer views services that can be purchased
 		2. Customer selects and views the service 
 		3. After selecting, system provides avaiability and cost of service
@@ -69,7 +94,8 @@
 		1. The customer's cart holds the service(s) that they have selected
 	**Alternate Sequence**
 		1. The customer leaves the webpage and the customers cart will be saved to their profile
-3. See all services
+	
+6. See all services
 	**Pre-condition**
 	    Customer must have selected categories option
 	    System must have services available for sale
@@ -81,5 +107,17 @@
 		3. System provides a gallery of all services provided from all sellers 
 	**Primary Postconditions:**
 		1. All services from all sellers are displayed for customer to see
-	     	 
-	
+	    
+7. Find item
+        **Pre-condition:**
+          Customer must type in keywords matching to service
+        **Trigger:**
+          Customer uses a search bar
+        **Primary Sequence:**
+                1. Customer clicks on the search bar
+                2. Customer types in keywords that match (similar words)
+                3. Page displays items
+        **Primary Postconditions:**
+                1. Page shows page with similar service
+        **Alternate Sequence:**
+                1. Page shows other services closely related
