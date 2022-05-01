@@ -15,9 +15,9 @@ myapp_obj.config.from_mapping(
 
 db = SQLAlchemy(myapp_obj)
 
-#login = LoginManager(myapp_obj)
+login = LoginManager(myapp_obj)
 # function that is called to login a user
-#login.login_view = 'login'
+login.login_view = 'login'
 #commented the above lines out for now, this is in the inclassexample for the __init__ file
 
 
