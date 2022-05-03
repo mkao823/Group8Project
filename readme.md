@@ -36,13 +36,14 @@ Simple Ecom site with various funcionalities that allows sellers to post service
 ## Technologies
 Project is created with:
 * Python - 3.8.10
-* Flask - 1.1.1
+* Flask - 2.0.3
+* Jinja2 - 3.0.3
 
 ## Setup
 Before running this project, install using:
 ```
 $ pip install flask
-$ pip install sqlachemy
+$ pip install SQLAlchemy
 $ python3 -m pip install requests
 ```
 
