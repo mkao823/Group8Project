@@ -193,17 +193,37 @@
         <div class="navbar-nav">
           
           <a class="nav-item nav-link" id="home" href="/">Home</a>
-          <a class="nav-item nav-link" id="login" href="/login">Login</a>
+	  <a class="nav-item nav-link" id="User Profile" href="/profile">Profile</a>
+	  <a class="nav-item nav-link" id="login" href="/login">Login</a>
           <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
           <a class="nav-item nav-link" id="signUp" href="/sign-up">Create Account</a>
           <a class="nav-item nav-link" id="removeAccount" href="/delete-account">Delete Account</a>
           <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Find Item" aria-label="Search">
+            <input class="form-control me-2" type="search" placeholder="Enter Item" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Find</button>
           </form>
         </div>
       </div>
     </nav>
+    
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %} {% for category, message in messages %} {% if category ==
+      'error' %}
+      <div class="alert alert-danger alter-dismissable fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% else %}
+      <div class="alert alert-success alter-dismissable fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% endif %} {% endfor %} {% endif %} {% endwith %}
+    {% block sign_up %}
     <!-- Begin home page, start with images -->
     <body>
     <div id="bg-right"></div>
@@ -247,10 +267,22 @@
       <p>We connect buyers to sellers. Buyers can list anything they want to sell, whether it be a service or goods. Buyers can browse sellers based on what they are looking for.</p>
       <a href="/sign-up" class="button">Get Started</a>
     </div>
+    {% endblock sign_up %} 
     <form>
       {% block content %}
       {% endblock content %}
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+       {% for message in messages %}
+       <li>{{ message }}</li>
+       {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
     </form>
+     
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

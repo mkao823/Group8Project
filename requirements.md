@@ -46,6 +46,7 @@
   		4. Site shows services with all currently selected categories
 	**Primary Postconditions:**
 		1. Services only with desired categories are shown   
+	  	2. Services only with desired categories are shown   
 	**Alternative Sequence:**
  		1. No services match the selected filters
   		2. Site shows an error message and prompts user to go back to filters to change choices
@@ -108,7 +109,7 @@
 	**Primary Postconditions:**
 		1. All services from all sellers are displayed for customer to see
 	    
-7. Find item
+6. Find item
         **Pre-condition:**
           Customer must type in keywords matching to service
         **Trigger:**
