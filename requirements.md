@@ -46,6 +46,10 @@
   		4. Site shows services with all currently selected categories
 	**Primary Postconditions:**
 		1. Services only with desired categories are shown   
+<<<<<<< HEAD
+	  	2. Services only with desired categories are shown   
+=======
+>>>>>>> e4990ac3ae5ca886b0d8739d53794fb373cb1548
 	**Alternative Sequence:**
  		1. No services match the selected filters
   		2. Site shows an error message and prompts user to go back to filters to change choices
@@ -66,6 +70,8 @@
   		3. Website shows a page with information on the user
 
 4. Add to cart
+<<<<<<< HEAD
+=======
 	**Pre-condition:**
 	  User must have a registered account.
 
@@ -79,6 +85,7 @@
   		4. Website shows a page with information on the user
 
 5. Use Case Name (Add to cart)
+>>>>>>> e4990ac3ae5ca886b0d8739d53794fb373cb1548
 	**Pre-condition:** 
 	   Must have an account
 	   Customer must be logged in
@@ -94,8 +101,13 @@
 		1. The customer's cart holds the service(s) that they have selected
 	**Alternate Sequence**
 		1. The customer leaves the webpage and the customers cart will be saved to their profile
+<<<<<<< HEAD
+
+5. See all services
+=======
 	
 6. See all services
+>>>>>>> e4990ac3ae5ca886b0d8739d53794fb373cb1548
 	**Pre-condition**
 	    Customer must have selected categories option
 	    System must have services available for sale
@@ -108,7 +120,7 @@
 	**Primary Postconditions:**
 		1. All services from all sellers are displayed for customer to see
 	    
-7. Find item
+6. Find item
         **Pre-condition:**
           Customer must type in keywords matching to service
         **Trigger:**
