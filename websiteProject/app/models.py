@@ -3,6 +3,9 @@ from app import login
 from flask_login import UserMixin
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, BooleanField, SubmitField
+from wtforms.validators import DataRequired
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -28,6 +31,12 @@ class Post(db.Model):
 
     def __repr__(self):
         return f'<{self.user_id}, {self.timestamp}: {self.body}>'
+
+class LoginForm(FlaskForm):
+   email = StringField('Email', validators=[DataRequired()])
+   password = PasswordField('Password', validators=[DataRequired()])
+   remember_me = BooleanField('Remember Me')
+   submit = SubmitField('Login')
 
 @login.user_loader
 def load_user(id):
