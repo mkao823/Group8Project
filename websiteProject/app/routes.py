@@ -30,9 +30,13 @@ def deleteAccount():
 def addToCart():
     return "addToCart"
 
-@myapp_obj.route('/login')
+@myapp_obj.route('/login', methods=['GET', 'POST'])
 def login():
-    return "login"
+    current_form = LoginForm()
+    if form.validate_on_submit ():
+        flash('Login requested for user{}, remember_me={}' .format(form.username.data, form.remember_me.data))
+        return redirect('/index')
+    return render_template("login.html", title='Login in', form=current_form)
 
 @myapp_obj.route('/logout')
 def logout():
