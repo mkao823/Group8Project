@@ -41,6 +41,8 @@ Project is created with:
 To run this project, install using:
 ```
 $ pip install flask
+$ pip install sqlachemy
+$ python3 -m pip install requests
 ```
 
 ## Team Members
