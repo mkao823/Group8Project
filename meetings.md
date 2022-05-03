@@ -27,14 +27,14 @@
 - Summary: Team discussed on the requirements for the MVP assignemnt. With 10 functional requirements, two members will do 2 tasks while the other two will do 3 tasks. Last 2 tasks required will be done on next milestone. Rest of class was to brainstorm how to do each task. 
 
 ### 2022-04-28 at 17:45
-- Team members attended -
+- Team members attended - Jonathan, Michael, William
 - Team Updates:
-  - <Hetal> worked on
-  - <Jonathan> worked on
-  - <Michael> worked on
-  - <William> worked on
+  - <Hetal> - unattended
+  - <Jonathan> worked on setting up the basic files to generate the website.
+  - <Michael> worked on setting up the basic files to generate the website.
+  - <William> worked on setting up the basic files to generate the website.
 
-- Summary:
+- Summary: Team discussed on how to get started on implementing the site. We decided on using the codes we reviewed in class as a starting point as most of it has some of the basic functions we need. Rest of the class was to brainstorm which functional requirements should be done first.
 
 ### 2022-05-03 at 17:45
 - Team members attended -

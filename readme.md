@@ -2,12 +2,13 @@
 - CMPE-131 Group 8 Project of Ecom site using Python3, HTML, and Flask
 
 ## Table of Contents
-* [General Info](#gneral-info)
+* [General Info](#general-info)
 * [Functional Requirements](#functional-requirements)
-* [Non-Functional Requirements](#non-functional-requiremnets)
+* [Non-Functional Requirements](#non-functional-requirements)
 * [Technologies](#technologies)
 * [Setup](#setup)
-* [Team Members](3team-members)
+* [How to Run](#how-to-run)
+* [Team Members](#team-members)
 
 ## General Info
 Simple Ecom site with various funcionalities that allows sellers to post services to sell.
@@ -38,9 +39,21 @@ Project is created with:
 * Flask - 1.1.1
 
 ## Setup
-To run this project, install using:
+Before running this project, install using:
 ```
 $ pip install flask
+$ pip install sqlachemy
+$ python3 -m pip install requests
+```
+
+## How to Run
+To run this project, type in:
+```
+$ python3 run.py
+```
+On a browser, type in:
+```
+127.0.0.1:5000
 ```
 
 ## Team Members

@@ -176,12 +176,13 @@
         <div class="navbar-nav">
           
           <a class="nav-item nav-link" id="home" href="/">Home</a>
-          <a class="nav-item nav-link" id="login" href="/login">Login</a>
+	  <a class="nav-item nav-link" id="User Profile" href="/profile">Profile</a>
+	  <a class="nav-item nav-link" id="login" href="/login">Login</a>
           <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
           <a class="nav-item nav-link" id="signUp" href="/sign-up">Create Account</a>
           <a class="nav-item nav-link" id="removeAccount" href="/delete-account">Delete Account</a>
           <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Find Item" aria-label="Search">
+            <input class="form-control me-2" type="search" placeholder="Enter Item" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Find</button>
           </form>
         </div>
@@ -244,7 +245,24 @@
       <span class="dot" onclick="currentSlide(2)"></span>
       <span class="dot" onclick="currentSlide(3)"></span>
     </div>
+
     {% endblock sign_up %} 
+      
+    <form>
+      {% block content %}
+      {% endblock content %}
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+       {% for message in messages %}
+       <li>{{ message }}</li>
+       {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    </form>
+     
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
