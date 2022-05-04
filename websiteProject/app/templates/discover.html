@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block head %}
+<style>
+    #images{
+	display:flex;
+        flex-direction:row;
+    }
+    
+    #image{
+	width:380px;
+        height:380px;
+        overflow:hidden;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+    .container{
+	max-width: 1520px;
+    }
+
+    body {
+        min-height: 75rem;
+    }
+    .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+    }
+    #description {
+        overflow:hidden;
+        text-overflow: ellipsis;
+        height:80px;
+    }
+</style>
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+           <div id="images">
+               <div id="image">
+                    <img src="https://redstonecontracting.com/wp-content/uploads/2020/02/quotepage1.jpg">
+                </div>
+           </div>
+         </div>
+      </div>
+{% endblock %}
+ 
+    
+{% endblock %}
