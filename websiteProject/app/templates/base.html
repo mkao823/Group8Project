@@ -131,6 +131,23 @@
         right: 90%;
         z-index: -1;
       }
+        
+      /* button to sign up but not in the navbar */
+      a.button {
+        -webkit-appearance: button;
+        -mox-appearance: button;
+        appearance: button;
+
+        text-decoration: none;
+        color: initial;
+        text-align: center;
+        background-color: lightseagreen;
+        padding: 5px 10px;
+      }
+
+      a.button:hover {
+        color: grey;
+      }
     </style>
 
     <script>
@@ -245,9 +262,12 @@
       <span class="dot" onclick="currentSlide(2)"></span>
       <span class="dot" onclick="currentSlide(3)"></span>
     </div>
-
+    <div style="padding-left:10%; padding-right:10%; text-align:center; margin-bottom: 50px;">
+      <h1>Connecting buyers to sellers</h1>
+      <p>We connect buyers to sellers. Buyers can list anything they want to sell, whether it be a service or goods. Buyers can browse sellers based on what they are looking for.</p>
+      <a href="/sign-up" class="button">Get Started</a>
+    </div>
     {% endblock sign_up %} 
-      
     <form>
       {% block content %}
       {% endblock content %}
