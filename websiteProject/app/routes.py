@@ -13,7 +13,7 @@ from flask_login import login_manager, login_required, logout_user
 #should have all our routes, login, logout, create account, etc in this file
 @myapp_obj.route('/')
 def splashPage():
-    return render_template("base.html")
+    return render_template("home.html")
 
 #class SignUpForm(FlaskForm):
 
@@ -66,14 +66,6 @@ def login():
             return redirect('/')
         flash('user not found')
     return render_template("/login.html")
-
-@myapp_obj.route('/login', methods=['GET', 'POST'])
-def login():
-    current_form = LoginForm()
-    if form.validate_on_submit ():
-        flash('Login requested for user{}, remember_me={}' .format(form.username.data, form.remember_me.data))
-        return redirect('/index')
-    return render_template("login.html", title='Login in', form=current_form)
 
 
 @myapp_obj.route('/logout')
