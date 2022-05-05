@@ -7,6 +7,7 @@
 * [Non-Functional Requirements](#non-functional-requirements)
 * [Technologies](#technologies)
 * [Setup](#setup)
+* [How to Run](#how-to-run)
 * [Team Members](#team-members)
 
 ## General Info
@@ -38,11 +39,21 @@ Project is created with:
 * Flask - 1.1.1
 
 ## Setup
-To run this project, install using:
+Before running this project, install using:
 ```
 $ pip install flask
 $ pip install sqlachemy
 $ python3 -m pip install requests
+```
+
+## How to Run
+To run this project, type in:
+```
+$ python3 run.py
+```
+On a browser, type in:
+```
+127.0.0.1:5000
 ```
 
 ## Team Members
