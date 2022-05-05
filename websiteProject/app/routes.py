@@ -14,7 +14,7 @@ from flask_login import login_manager, login_required, logout_user
 #should have all our routes, login, logout, create account, etc in this file
 @myapp_obj.route('/')
 def splashPage():
-    return render_template("base.html")
+    return render_template("home.html")
 
 #class SignUpForm(FlaskForm):
 
@@ -62,6 +62,9 @@ def profile():
 """
 @myapp_obj.route('/login', methods=['GET','POST'])
 def login():
+
+    return render_template("login.html")
+  
     if request.method =='POST':
         user = SessionUser.find_by_session_id(request.data['user_id'])
         if user:
@@ -70,6 +73,7 @@ def login():
             return redirect('/')
         flash('user not found')
     return render_template("/login.html")
+
 """
 @myapp_obj.route('/login', methods=['GET', 'POST'])
 def login():
@@ -80,6 +84,9 @@ def login():
     return render_template("login.html", title='Login in', form=current_form)
 
 
+
+
+
 @myapp_obj.route('/logout')
 #@login_required
 def logout():
@@ -88,4 +95,9 @@ def logout():
     return redirect('/')
 
     return "logout"
+
+
+@myapp_obj.route('/discover')
+def discover():
+    return render_template("discover.html")
 

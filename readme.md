@@ -25,7 +25,7 @@ Simple Ecom site with various funcionalities that allows sellers to post service
 - Find Item
 - Add to Cart
 - See All Items Available from All of the Sellers
-- Filter by Catgories
+- Filter by Categories
 
 ## Non-Functional Requirements
 - Sellers should be notified of a new job
