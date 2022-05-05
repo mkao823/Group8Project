@@ -61,10 +61,7 @@ def profile():
     return render_template("/profile.html")
 """
 @myapp_obj.route('/login', methods=['GET','POST'])
-def login():
-
-    return render_template("login.html")
-  
+def login():  
     if request.method =='POST':
         user = SessionUser.find_by_session_id(request.data['user_id'])
         if user:
