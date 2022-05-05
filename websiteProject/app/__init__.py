@@ -4,6 +4,7 @@ from flask_login import LoginManager
 import os
 from os import path
 
+
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 myapp_obj = Flask(__name__)

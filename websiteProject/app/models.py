@@ -21,15 +21,13 @@ class Post(db.Model):
 
     def __repr__(self):
         return f'<{self.user_id}, {self.timestamp}: {self.body}>'
-
+"""
 
 class LoginForm(FlaskForm):
    email = StringField('Email', validators=[DataRequired()])
    password = PasswordField('Password', validators=[DataRequired()])
    remember_me = BooleanField('Remember Me')
    submit = SubmitField('Login')
-
-
 
 @login.user_loader
 def load_user(id):
