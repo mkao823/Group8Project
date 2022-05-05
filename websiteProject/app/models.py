@@ -21,7 +21,7 @@ class User(UserMixin, db.Model):
 
     def __repr__(self):
         return f'<{self.user_id}, {self.timestamp}: {self.body}>'
-
+"""
 
 class LoginForm(FlaskForm):
    email = StringField('Email', validators=[DataRequired()])
@@ -30,7 +30,7 @@ class LoginForm(FlaskForm):
    submit = SubmitField('Login')
 
 
-"""
+
 
 @login.user_loader
 def load_user(id):

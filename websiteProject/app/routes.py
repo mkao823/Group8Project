@@ -1,4 +1,5 @@
 from flask_login import current_user
+from .models import LoginForm
 from app import myapp_obj, db
 
 from flask import render_template, request, flash, redirect, url_for
@@ -32,9 +33,12 @@ def createAccount():
             #creates new user with email, name, password
             db.session.add(user) #add this created user to our database using this command, then commit 
             db.session.commit()
+            #data = request.form //uncommenting out these two lines will print the form data from user input in terminal
+            #print(data)
             flash('Account created!', category='success')#message on screen should notify us that account has been created, if not, this is not correct
             #after creating account, we should make sure we login user as well
-    return render_template("sign_up.html", user = current_user)
+            redirect('/')
+    return render_template("sign_up.html")
 
 @myapp_obj.route('/delete-account', methods=['GET', 'POST'])
 def deleteAccount(account):
@@ -55,7 +59,7 @@ def addToCart():
 #@login_required
 def profile():
     return render_template("/profile.html")
-
+"""
 @myapp_obj.route('/login', methods=['GET','POST'])
 def login():
     if request.method =='POST':
@@ -66,7 +70,7 @@ def login():
             return redirect('/')
         flash('user not found')
     return render_template("/login.html")
-
+"""
 @myapp_obj.route('/login', methods=['GET', 'POST'])
 def login():
     current_form = LoginForm()
