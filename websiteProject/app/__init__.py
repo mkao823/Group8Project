@@ -4,7 +4,6 @@ from flask_login import LoginManager
 import os
 from os import path
 
-
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 myapp_obj = Flask(__name__)
@@ -17,6 +16,7 @@ myapp_obj.config.from_mapping(
 
 db = SQLAlchemy(myapp_obj)
 #creating database
+from .models import User
 
 
 def createDatabase(app):
@@ -24,10 +24,13 @@ def createDatabase(app):
         db.create_all(app=app)
         print("Created db")
 
-createDatabase(myapp_obj)
+#createDatabase(myapp_obj) //moved to run.py file instead
 
 login = LoginManager(myapp_obj)
 # function that is called to login a user
 login.login_view = 'login'
+@login.user_loader
+def load_user(id):
+    return User.query.get(int(id))
 
-from app import routes, models
+from app import models, routes

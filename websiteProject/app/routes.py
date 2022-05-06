@@ -41,13 +41,17 @@ def createAccount():
     return render_template("sign_up.html")
 
 @myapp_obj.route('/delete-account', methods=['GET', 'POST'])
-def deleteAccount(account):
-    users = User.query.all()
-    #u = User.query.get(int(id))
-    #db.session.delete(u)
-    for u in users:
-        if u == account:
-            db.session.delete(u)
+def deleteAccount():
+    if request.method == 'POST':
+        email = request.form.get('email')
+        name = request.form.get('name') #not sure if name will be needed, duplicate emails are not allowed, so good way to check
+        #using this email, we should find the user associated and delete from database
+        users = User.query.all()
+        #u = User.query.get(int(id))
+        #db.session.delete(u)
+        for u in users:
+            if u == account:
+                db.session.delete(u)
     return render_template("delete_account.html")
 
 @myapp_obj.route('/cart')
@@ -88,4 +92,3 @@ def logout():
     return redirect('/')
 
     return "logout"
-
