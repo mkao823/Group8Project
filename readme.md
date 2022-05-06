@@ -18,10 +18,10 @@ Simple Ecom site with various funcionalities that allows sellers to post service
 - Logout
 - Create New Account
 - Delete Account
-- User Ratings
-- User Profile
-- Splash Page
-- Add Pictures for Items
+- History to see past purchases
+- User Profile to edit information
+- Buy item with fake paying method
+- Add a new listing
 - Find Item
 - Add to Cart
 - See All Items Available from All of the Sellers
@@ -32,6 +32,7 @@ Simple Ecom site with various funcionalities that allows sellers to post service
 - Webpage should load quickly to show that it is not unresponsive
 - Users should not be able to see others' transactions
 - Users can set links to other sites on their profile
+- Splash Page
 
 ## Technologies
 Project is created with:
