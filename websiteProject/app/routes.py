@@ -80,7 +80,7 @@ def login():
         return redirect('/index')
     return render_template("login.html", title='Login in', form=current_form)
 
-
+'''add'''
 
 
 
