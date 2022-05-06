@@ -59,19 +59,7 @@ def addToCart():
 #@login_required
 def profile():
     return render_template("/profile.html")
-"""
-@myapp_obj.route('/login', methods=['GET','POST'])
-def login():  
-    if request.method =='POST':
-        user = SessionUser.find_by_session_id(request.data['user_id'])
-        if user:
-            login_user(user)
-            session['was_once_logged_in'] = True
-            return redirect('/')
-        flash('user not found')
-    return render_template("/login.html")
 
-"""
 @myapp_obj.route('/login', methods=['GET', 'POST'])
 def login():
     current_form = LoginForm()
@@ -79,9 +67,6 @@ def login():
         flash('Login requested for user{}, remember_me={}' .format(form.username.data, form.remember_me.data))
         return redirect('/index')
     return render_template("login.html", title='Login in', form=current_form)
-
-'''add'''
-
 
 
 @myapp_obj.route('/logout')
