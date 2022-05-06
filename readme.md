@@ -18,10 +18,10 @@ Simple Ecom site with various funcionalities that allows sellers to post service
 - Logout
 - Create New Account
 - Delete Account
-- User Ratings
-- User Profile
-- Splash Page
-- Add Pictures for Items
+- History to see past purchases
+- User Profile to edit information
+- Buy item with fake paying method
+- Add a new listing
 - Find Item
 - Add to Cart
 - See All Items Available from All of the Sellers
@@ -32,17 +32,19 @@ Simple Ecom site with various funcionalities that allows sellers to post service
 - Webpage should load quickly to show that it is not unresponsive
 - Users should not be able to see others' transactions
 - Users can set links to other sites on their profile
+- Splash Page
 
 ## Technologies
 Project is created with:
 * Python - 3.8.10
-* Flask - 1.1.1
+* Flask - 2.0.3
+* Jinja2 - 3.0.3
 
 ## Setup
 Before running this project, install using:
 ```
 $ pip install flask
-$ pip install sqlachemy
+$ pip install SQLAlchemy
 $ python3 -m pip install requests
 ```
 
