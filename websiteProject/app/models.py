@@ -11,6 +11,7 @@ class User(UserMixin, db.Model):
     name = db.Column(db.String(64))
     email = db.Column(db.String(64))
     password1 = db.Column(db.String(128))
+    posts = db.relationship('Post', backref='author', lazy='dynamic')
 
 
 class Post(db.Model):
@@ -21,7 +22,6 @@ class Post(db.Model):
 
     def __repr__(self):
         return f'<{self.user_id}, {self.timestamp}: {self.body}>'
-"""
 
 class LoginForm(FlaskForm):
    email = StringField('Email', validators=[DataRequired()])

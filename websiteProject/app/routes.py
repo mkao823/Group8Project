@@ -7,7 +7,7 @@ from flask_wtf import FlaskForm
 
 from flask import current_app as app, render_template, request, redirect, flash, url_for
 
-from .models import User
+from .models import User, Post
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_manager, login_required, logout_user
 
@@ -59,6 +59,7 @@ def addToCart():
 #@login_required
 def profile():
     return render_template("/profile.html")
+
 """
 @myapp_obj.route('/login', methods=['GET','POST'])
 def login():  
@@ -82,7 +83,13 @@ def login():
 
 
 
-
+#the page to add a new listing
+@myapp_obj.route('/new-listing', methods=["GET", "POST"])
+@login_required
+def new_listing():
+    if request.method == "POST":
+        body = request.form.get('body')
+    return render_template("new_listing.html")
 
 @myapp_obj.route('/logout')
 #@login_required
