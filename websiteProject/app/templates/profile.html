@@ -1,11 +1,43 @@
-{% extends "base.html" %}
-{% block title %}
-	Profile
-{% endblock title %} 
-{% block content %}
-   <body>
-	   <p> Name: {{name}} </p> <br>
-	   <p><strong>Email: </strong>  {{email}} </p> <br>
-   </body>
+s{% extends "base.html" %}
 
-{% endblock %}
+{% block content %}
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+
+        {% for message in messages %}
+        {{ message }}
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+    {% if user %}
+
+    <h1>
+        User: {{ user }}
+    </h1>
+    {% endif %}
+
+    <form action ="" method="post" novalidate>
+        <input type="submit" name="Edit Username" value="Edit Username">
+    </form>
+
+    {% if user %}
+    <h2>
+        Current Email: {{ email }}
+    </h2>
+    {% endif %}
+
+    <form action ="" method="post" novalidate>
+        <input type="submit" name="Edit Email" value="Edit Email">
+    </form>
+
+    <form action ="" method="post" novalidate>
+        <input type="submit" name="Edit Password" value="Edit Password">
+    </form>
+
+     <ul>
+        <li>Name: {{ user }}</li>
+        <li>Email: {{ email }}</li>
+     </ul>
+{% endblock content %}
