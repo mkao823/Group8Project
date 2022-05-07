@@ -63,17 +63,24 @@ def addToCart():
 #@login_required
 def profile():
     return render_template("/profile.html")
-"""
+
 @myapp_obj.route('/login', methods=['GET','POST'])
 def login():
-    if request.method =='POST':
-        user = SessionUser.find_by_session_id(request.data['user_id'])
-        if user:
-            login_user(user)
-            session['was_once_logged_in'] = True
-            return redirect('/')
-        flash('user not found')
-    return render_template("/login.html")
+    # checks if user is already logged in, redirects to homepage
+    if current_user.is_authenticated:
+        return redirect('/')
+    form = LoginForm()
+    # checks if user puts in correct info
+    if form.validate_on_submit():
+        user = User.query.filter_by(username=form.username.data).first()
+        # if user puts wrong info, show error message
+        if user is None or not user.check_password(form.password.data):
+            flash('Invalid Username or Password')
+            return redirect('/login')
+        login_user(user, remember=form.remember_me.data)
+        return redirect('/login')
+    return render_template("/login.html", title = 'Sign in', form=form)
+
 """
 @myapp_obj.route('/login', methods=['GET', 'POST'])
 def login():
@@ -82,8 +89,7 @@ def login():
         flash('Login requested for user{}, remember_me={}' .format(form.username.data, form.remember_me.data))
         return redirect('/index')
     return render_template("login.html", title='Login in', form=current_form)
-
-
+"""
 @myapp_obj.route('/logout')
 #@login_required
 def logout():
