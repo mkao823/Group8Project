@@ -11,6 +11,9 @@ class User(UserMixin, db.Model):
     name = db.Column(db.String(64))
     email = db.Column(db.String(64))
     password1 = db.Column(db.String(128))
+    
+    def __repr__(self):
+        return f'<Email: {self.email}, Name: {self.name}>'
 
 
 """class Post(db.Model):
