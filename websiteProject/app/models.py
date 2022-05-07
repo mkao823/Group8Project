@@ -1,4 +1,4 @@
-from app import db, login
+from app import db
 from flask_login import UserMixin
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -13,7 +13,7 @@ class User(UserMixin, db.Model):
     password1 = db.Column(db.String(128))
 
 
-class Post(db.Model):
+"""class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.String(256))
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
@@ -29,7 +29,7 @@ class LoginForm(FlaskForm):
    remember_me = BooleanField('Remember Me')
    submit = SubmitField('Login')
 
-@login.user_loader
-def load_user(id):
-    return User.query.get(int(id))
+
+
+
 
