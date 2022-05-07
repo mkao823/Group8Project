@@ -199,7 +199,11 @@
           <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
           <a class="nav-item nav-link" id="signUp" href="/sign-up">Create Account</a>
           <a class="nav-item nav-link" id="removeAccount" href="/delete-account">Delete Account</a>
+<<<<<<< HEAD
           <a class="nav-item nav-link" id="newListing" href="/new-listing">New Listing</a>
+=======
+          <a class="nav-item nav-link" id="history" href="/history">History</a>
+>>>>>>> 28d6c6b3a2a59c86f22cfcda4f9ebd2b68658b2d
           <form class="d-flex">
             <input class="form-control me-2" type="search" placeholder="Enter Item" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Find</button>
@@ -229,7 +233,11 @@
     {% block sign_up %}
     {% endblock sign_up %} 
 
-      
+    {% block discover %}
+    {% endblock discover %}
+
+    {% block history %}
+    {% endblock history %}      
     <!--<form>
 
     <form>
