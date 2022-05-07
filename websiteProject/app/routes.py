@@ -9,12 +9,12 @@ from flask import current_app as app, render_template, request, redirect, flash,
 
 from .models import User
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import login_manager, login_required, logout_user
+from flask_login import login_manager, login_required, logout_user, login_user
 
 #should have all our routes, login, logout, create account, etc in this file
 @myapp_obj.route('/')
 def splashPage():
-    return render_template("base.html")
+    return render_template("home.html")
 
 #class SignUpForm(FlaskForm):
 
@@ -77,11 +77,13 @@ def profile():
 @myapp_obj.route('/login', methods=['GET','POST'])
 def login():
     # checks if user is already logged in, redirects to homepage
+    print("Hello")
     if current_user.is_authenticated:
         return redirect('/')
     form = LoginForm()
     # checks if user puts in correct info
     if form.validate_on_submit():
+        print("World")
         user = User.query.filter_by(username=form.username.data).first()
         # if user puts wrong info, show error message
         if user is None or not user.check_password(form.password.data):
