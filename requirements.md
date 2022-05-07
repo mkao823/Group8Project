@@ -21,86 +21,86 @@
 
 ## Use Cases
 1. Buy item with fake paying method
-        **Pre-condition:**
+        -**Pre-condition:**
    - Service/item is in the cart
-        **Trigger:**
+        -**Trigger:**
    - A user presses a checkout button
-        **Primary Sequence:**
+        -**Primary Sequence:**
    - 1. A user presses a checkout button
    - 2. The site loads a page showing fields for user to put in fake credit card info (name, card info)
-        **Primary Postconditions:**
+        -**Primary Postconditions:**
    - 1. A user hits submit and page flashes a message of: "service/item has been bought"
-        **Alternative Sequence:**
+        -**Alternative Sequence:**
    - 1. User info doesn't have right information of fake credit card
    - 2. Site shows an error message and page goes back to the payment page
 
 2. Filter by Categories
-       **Pre-condition:**
+        -**Pre-condition:**
    - Multiple services/items available for purchase
-        **Trigger:**
+        -**Trigger:**
    - A user decides to serach services/items by category
-        **Primary Sequence:**
+        -**Primary Sequence:**
    - 1. User clicks on categories
    - 2. Site shows available filters
    - 3. User clicks on category to filter out or search for
    - 4. Site shows services with all currently selected categories
-        **Primary Postconditions:**
+        -**Primary Postconditions:**
    - 1. Services only with desired categories are shown
-        **Alternative Sequence:**
+        -**Alternative Sequence:**
    - 1. No services match the selected filters
    - 2. Site shows an error message and prompts user to go back to filters to change choices
 
 3. User profile to edit information
-        **Pre-condition:**
+        -**Pre-condition:**
    - User must have a registered account.
-        **Trigger:**
+        -**Trigger:**
    - Website user clicks on the username or userprofile icon.
-        **Primary Sequence:**
+        -**Primary Sequence:**
    - 1. User clicks on profile tab
    - 2. Website shows user's profile pic (shows default pic), user's name, and user's email.
    - 3. User can edit each field
-        **Alternate Sequence:**
+        -**Alternate Sequence:**
    - 1. User inputs email field with an input that doesn't match a email address
    - 2. Website shows error message to make user to try again with a correct email address.
 
 4. Add to cart
-        **Pre-condition:**
+        -**Pre-condition:**
    - Must have an account
    - Customer must be logged in
-        **Trigger:**
+        -**Trigger:**
    - Customer selects add to cart option
-        **Primary Sequence:**
+        -**Primary Sequence:**
    - 1. Customer views services that can be purchased
    - 2. Customer selects and views the service
    - 3. After selecting, system provides avaiability and cost of service
    - 4. Customer can select to add to cart
    - 5. System stores the customers selection in cart
-        **Primary Postconditions:**
+        -**Primary Postconditions:**
    - 1. The customer's cart holds the service(s) that they have selected
-        **Alternate Sequence**
+        -**Alternate Sequence**
    - 1. The customer leaves the webpage and the customers cart will be saved to their profile
 
 5. See all services/items
-        **Pre-condition**
+        -**Pre-condition**
    - Customer must have selected categories option
    - System must have services available for sale
-        **Trigger**
+        -**Trigger**
    - Customer selects option to show all items/services in categories section
-        **Primary Sequence**
+        -**Primary Sequence**
    - 1. Customer chooses categories tab that holds options to view services offered
    - 2. Customer chooses to view all items from all sellers
    - 3. System provides a gallery of all services provided from all sellers
-        **Primary Postconditions:**
+        -**Primary Postconditions:**
    - 1. All services from all sellers are displayed for customer to see
 
 6. History to see past purchases
-        **Pre-condition:**
+        -**Pre-condition:**
    - Customer must have bought a service/item
-  	**Trigger:**
+  	 -**Trigger:**
    - User clicks on history tab on homepage
-        **Primary Sequence:**
+        -**Primary Sequence:**
    - 1. Customer clicks on history tab
    - 2. Website shows past purchases made by user
-        **Primary Postconditions:**
+        -**Primary Postconditions:**
    - 1. History tab shows the details of past purchases
    - 2. Details include what service/item, name of user who bought it, and cost
