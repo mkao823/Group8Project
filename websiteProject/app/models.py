@@ -27,14 +27,12 @@ class User(UserMixin, db.Model):
 """
 
 class LoginForm(FlaskForm):
+   user = StringField('Name', validators=[DataRequired()])
    email = StringField('Email', validators=[DataRequired()])
    password = PasswordField('Password', validators=[DataRequired()])
    remember_me = BooleanField('Remember Me')
    submit = SubmitField('Login')
 
 class ProfileForm(FlaskForm):
-    user = StringField('Username', validators=[DataRequired()])
+    user = StringField('Name', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
-
-
-

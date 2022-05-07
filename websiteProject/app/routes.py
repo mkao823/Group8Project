@@ -67,7 +67,7 @@ def addToCart():
 
 
 @myapp_obj.route('/profile')
-#@login_required
+@login_required
 def profile():
     form = ProfileForm()
     return render_template("/profile.html", form=form)
@@ -75,9 +75,8 @@ def profile():
 @myapp_obj.route('/login', methods=['GET','POST'])
 def login():
     # checks if user is already logged in, redirects to homepage
-    print("Hello")
-    if current_user.is_authenticated:
-        return redirect(url_for('/'))
+    #if current_user.is_authenticated:
+    #    return redirect(url_for('/'))
     form = LoginForm()
     # checks if user puts in correct info
     if form.validate_on_submit():
