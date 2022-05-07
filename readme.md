@@ -43,9 +43,15 @@ Project is created with:
 ## Setup
 Before running this project, install using:
 ```
+$ pip install DateTime
 $ pip install flask
+$ pip install Flask-Login
+$ pip install Flask-WTF
 $ pip install SQLAlchemy
+$ pip install Werkzeug
+$ pip install WTForms
 $ python3 -m pip install requests
+
 ```
 
 ## How to Run
