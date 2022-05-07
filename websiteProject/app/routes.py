@@ -92,3 +92,11 @@ def logout():
     return redirect('/')
 
     return "logout"
+
+@myapp_obj.route('/discover')
+def discover():
+    return render_template("discover.html")
+
+@myapp_obj.route('/history')
+def history():
+    return render_template("history.html")
