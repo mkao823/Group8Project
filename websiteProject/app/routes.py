@@ -1,12 +1,9 @@
-from flask_login import current_user
-from .models import LoginForm
 from app import myapp_obj, db
-
+from flask_login import current_user
+from app.models import LoginForm, ProfileForm
 from flask import render_template, request, flash, redirect, url_for
 from flask_wtf import FlaskForm
-
 from flask import current_app as app, render_template, request, redirect, flash, url_for
-
 from .models import User
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_manager, login_required, logout_user
@@ -62,13 +59,14 @@ def addToCart():
 @myapp_obj.route('/profile')
 #@login_required
 def profile():
-    return render_template("/profile.html")
+    form = ProfileForm()
+    return render_template("/profile.html", form=form)
 
 @myapp_obj.route('/login', methods=['GET','POST'])
 def login():
     # checks if user is already logged in, redirects to homepage
     if current_user.is_authenticated:
-        return redirect('/')
+        return redirect(url_for('/'))
     form = LoginForm()
     # checks if user puts in correct info
     if form.validate_on_submit():
@@ -76,9 +74,10 @@ def login():
         # if user puts wrong info, show error message
         if user is None or not user.check_password(form.password.data):
             flash('Invalid Username or Password')
-            return redirect('/login')
-        login_user(user, remember=form.remember_me.data)
-        return redirect('/login')
+            return redirect(url_for('/login'))
+        login_user(user)
+        flash('You are logged in')
+        return redirect(url_for('/'))
     return render_template("/login.html", title = 'Sign in', form=form)
 
 """
