@@ -1,7 +1,9 @@
-s{% extends "base.html" %}
-
-{% block content %}
-
+{% extends "base.html" %}
+{% block title %}
+	Profile
+{% endblock title %}
+{% block sign_up %}
+   <h2> Profile </h2>
     {% with messages = get_flashed_messages() %}
         {% if messages %}
 
@@ -18,9 +20,10 @@ s{% extends "base.html" %}
     </h1>
     {% endif %}
 
-    <form action ="" method="post" novalidate>
-        <input type="submit" name="Edit Username" value="Edit Username">
-    </form>
+    <ul>
+	    <li>Name: {{ user }} </li>
+	    <li>Email: {{ email }} </li>
+    </ul>
 
     {% if user %}
     <h2>
@@ -29,15 +32,7 @@ s{% extends "base.html" %}
     {% endif %}
 
     <form action ="" method="post" novalidate>
-        <input type="submit" name="Edit Email" value="Edit Email">
-    </form>
-
-    <form action ="" method="post" novalidate>
         <input type="submit" name="Edit Password" value="Edit Password">
     </form>
 
-     <ul>
-        <li>Name: {{ user }}</li>
-        <li>Email: {{ email }}</li>
-     </ul>
-{% endblock content %}
+{% endblock sign_up %}
