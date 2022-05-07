@@ -81,15 +81,24 @@ def login():
         return redirect('/index')
     return render_template("login.html", title='Login in', form=current_form)
 
-
-
 #the page to add a new listing
 @myapp_obj.route('/new-listing', methods=["GET", "POST"])
-@login_required
+#@login_required
 def new_listing():
     if request.method == "POST":
-        body = request.form.get('body')
+        desc = request.form.get("desc")
+        body = request.form.get("body")
+        post = Post(desc=desc, body=body)
+        db.session.add(post)
+        db.session.commit()
+        return redirect(url_for(".display", post_id=post.id))
     return render_template("new_listing.html")
+
+#directs the user to a listing
+@myapp_obj.get('/listing/<int:post_id>')
+def display(post_id):
+    post = Post.query.filter_by(id=post_id).one()
+    return render_template("listing.html", post=post)
 
 @myapp_obj.route('/logout')
 #@login_required
