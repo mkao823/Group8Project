@@ -26,7 +26,10 @@ def createAccount():
         password1 = request.form.get('password1')
         password2 = request.form.get('password2') 
         #flash("account created", category = "success")
-        if password1 != password2:
+        user = User.query.filter_by(email=email).first()
+        if user:
+            flash("User with this email already exists!", category = "error")
+        elif password1 != password2:
             flash("Passwords must match", category = "error")
         else:
             user = User(email = email, name = name, password1 = generate_password_hash(password1, method = 'sha256'))
@@ -41,17 +44,24 @@ def createAccount():
     return render_template("sign_up.html")
 
 @myapp_obj.route('/delete-account', methods=['GET', 'POST'])
+@login_required
 def deleteAccount():
-    if request.method == 'POST':
+    if request.method == 'POST':#once users press the submit button, with the correct email and password, we can delete the account
         email = request.form.get('email')
-        name = request.form.get('name') #not sure if name will be needed, duplicate emails are not allowed, so good way to check
+        #not sure if name will be needed, duplicate emails are not allowed, so good way to check
         #using this email, we should find the user associated and delete from database
-        users = User.query.all()
-        #u = User.query.get(int(id))
-        #db.session.delete(u)
-        for u in users:
-            if u == account:
-                db.session.delete(u)
+        user = User.query.filter_by(email=email).first()
+        print(current_user)
+        print(user)
+        if current_user == user:
+            db.session.delete(user)
+            db.session.commit()
+            flash('Account deleted!', category = 'success')
+        else: #if we have login required, the only thing that could be wrong is incorrect email,
+            #if we didnt have login_required, its possible that user is not logged in and tries to delete account,
+            #without it, this error message below would print no matter wht
+            flash("Incorrect email", category = 'error')
+       
     return render_template("delete_account.html")
 
 @myapp_obj.route('/cart')

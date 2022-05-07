@@ -5,9 +5,18 @@
 {% block sign_up %}
 <form method="POST">
     <h3>Delete Account</h3>
-    <label for="email">Email Address</label>
-    <input
+    <div class="form-group">
+        <label for="email">Email Address</label>
+        <input
         type="email"
-        class
+        class="form-control"
+        id="email"
+        name="email"
+        placeholder="Enter email"
+    />
+    </div>
+    <br />
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
 </form>
 {% endblock sign_up %}
