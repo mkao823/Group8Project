@@ -20,7 +20,7 @@
 5. Splash Page
 
 ## Use Cases
-1. Buy item with fake paying method
+1. **Buy item with fake paying method**
 
    **Pre-condition(s):**
    - Service/item is in the cart
@@ -39,7 +39,7 @@
    - 1. User info doesn't have right information of fake credit card
    - 2. Site shows an error message and page goes back to the payment page
 
-2. Filter by Categories
+2. **Filter by Categories**
 
    **Pre-condition(s):**
    - Multiple services/items available for purchase
@@ -60,7 +60,8 @@
    - 1. No services match the selected filters
    - 2. Site shows an error message and prompts user to go back to filters to change choices
 
-3. User profile to edit information
+3. **User profile to edit information**
+
    **Pre-condition(s):**
    - User must have a registered account.
    
@@ -76,7 +77,7 @@
    - 1. User inputs email field with an input that doesn't match a email address
    - 2. Website shows error message to make user to try again with a correct email address.
 
-4. Add to cart
+4. **Add to cart**
 
    **Pre-condition(s):**
    - Must have an account
@@ -98,7 +99,7 @@
    **Alternate Sequence**
    - 1. The customer leaves the webpage and the customers cart will be saved to their profile
 
-5. See all services/items
+5. **See all services/items**
   
   **Pre-condition(s):**
    - Customer must have selected categories option
@@ -115,7 +116,7 @@
    **Primary Postconditions:**
    - 1. All services from all sellers are displayed for customer to see
 
-6. See past purchases(history)
+6. **See past purchases(history)**
 
    **Pre-condition(s):**
    - Customer must have bought a service/item
