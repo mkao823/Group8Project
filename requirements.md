@@ -21,7 +21,8 @@
 
 ## Use Cases
 1. Buy item with fake paying method
-        **Pre-condition:**
+
+   **Pre-condition:**
    - Service/item is in the cart
         -**Trigger:**
    - A user presses a checkout button
