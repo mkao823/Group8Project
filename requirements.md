@@ -101,7 +101,7 @@
 
 5. **See all services/items**
   
-  **Pre-condition(s):**
+   **Pre-condition(s):**
    - Customer must have selected categories option
    - System must have services available for sale
    
