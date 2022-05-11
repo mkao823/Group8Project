@@ -32,8 +32,8 @@ def createAccount():
         elif password1 != password2:
             flash("Passwords must match", category = "error")
         else:
-            user = User(email = email, name = name, password1 = generate_password_hash(password1, method = 'sha256'))
-            #creates new user with email, name, password
+            user = User(email = email, name = name, password1 = generate_password_hash(password1, method = 'sha256')) 
+            #creates new user with email, name, password, maybe add date_time from class to see when created
             db.session.add(user) #add this created user to our database using this command, then commit 
             db.session.commit()
             #data = request.form //uncommenting out these two lines will print the form data from user input in terminal
@@ -66,7 +66,7 @@ def deleteAccount():
 
 @myapp_obj.route('/cart')
 def addToCart():
-    return "addToCart"
+    return render_template("cart.html")
 
 
 @myapp_obj.route('/profile')

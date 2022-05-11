@@ -15,7 +15,14 @@ class User(UserMixin, db.Model):
     def __repr__(self):
         return f'<Email: {self.email}, Name: {self.name}>'
 
+"""class Service(db.Model):
+    id = db.Columm(db.Integer, primary_key=True)
+    title = db.Column(db.String(32))
+    price = db.Column(db.Float)
 
+    def __repr__(self):
+        return f'<Title: {self.title}, Price: {self.price}>'
+"""
 """class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.String(256))
