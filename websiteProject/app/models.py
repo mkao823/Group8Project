@@ -11,7 +11,7 @@ class User(UserMixin, db.Model):
     name = db.Column(db.String(64))
     email = db.Column(db.String(64))
     password1 = db.Column(db.String(128))
-    
+    posts = db.relationship('Post', backref='author', lazy='dynamic')
     def __repr__(self):
         return f'<Email: {self.email}, Name: {self.name}>'
 
@@ -20,26 +20,31 @@ class User(UserMixin, db.Model):
     title = db.Column(db.String(32))
     price = db.Column(db.Float)
 
+<<<<<<< HEAD
     def __repr__(self):
         return f'<Title: {self.title}, Price: {self.price}>'
 """
 """class Post(db.Model):
+=======
+
+class Post(db.Model):
+>>>>>>> cab0b97a11dcf4264cdb4dee391e63dab74762db
     id = db.Column(db.Integer, primary_key=True)
+    desc = db.Column(db.String(64))
     body = db.Column(db.String(256))
-    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):
         return f'<{self.user_id}, {self.timestamp}: {self.body}>'
-"""
 
 class LoginForm(FlaskForm):
+   user = StringField('Name', validators=[DataRequired()])
    email = StringField('Email', validators=[DataRequired()])
    password = PasswordField('Password', validators=[DataRequired()])
    remember_me = BooleanField('Remember Me')
    submit = SubmitField('Login')
 
-
-
-
-
+class ProfileForm(FlaskForm):
+    user = StringField('Name', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])

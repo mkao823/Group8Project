@@ -7,16 +7,15 @@ from flask_wtf import FlaskForm
 
 from flask import current_app as app, render_template, request, redirect, flash, url_for
 
-from .models import User
+from .models import User, Post
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_manager, login_required, logout_user, login_user
+
 
 #should have all our routes, login, logout, create account, etc in this file
 @myapp_obj.route('/')
 def splashPage():
     return render_template("home.html")
-
-#class SignUpForm(FlaskForm):
 
 @myapp_obj.route('/sign-up', methods=['GET', 'POST'])
 def createAccount():
@@ -44,7 +43,7 @@ def createAccount():
     return render_template("sign_up.html")
 
 @myapp_obj.route('/delete-account', methods=['GET', 'POST'])
-@login_required
+#@login_required
 def deleteAccount():
     if request.method == 'POST':#once users press the submit button, with the correct email and password, we can delete the account
         email = request.form.get('email')
@@ -61,7 +60,6 @@ def deleteAccount():
             #if we didnt have login_required, its possible that user is not logged in and tries to delete account,
             #without it, this error message below would print no matter wht
             flash("Incorrect email", category = 'error')
-       
     return render_template("delete_account.html")
 
 @myapp_obj.route('/cart')
@@ -72,14 +70,14 @@ def addToCart():
 @myapp_obj.route('/profile')
 #@login_required
 def profile():
-    return render_template("/profile.html")
+    form = ProfileForm()
+    return render_template("/profile.html", form=form)
 
 @myapp_obj.route('/login', methods=['GET','POST'])
 def login():
     # checks if user is already logged in, redirects to homepage
-    print("Hello")
-    if current_user.is_authenticated:
-        return redirect('/')
+    #if current_user.is_authenticated:
+    #    return redirect(url_for('/'))
     form = LoginForm()
     # checks if user puts in correct info
     if form.validate_on_submit():
@@ -88,10 +86,12 @@ def login():
         # if user puts wrong info, show error message
         if user is None or not user.check_password(form.password.data):
             flash('Invalid Username or Password')
-            return redirect('/login')
-        login_user(user, remember=form.remember_me.data)
-        return redirect('/login')
+            return redirect(url_for('/login'))
+        login_user(user)
+        flash('You are logged in')
+        return redirect(url_for('/'))
     return render_template("/login.html", title = 'Sign in', form=form)
+
 
 """
 @myapp_obj.route('/login', methods=['GET', 'POST'])
@@ -102,6 +102,26 @@ def login():
         return redirect('/index')
     return render_template("login.html", title='Login in', form=current_form)
 """
+
+#the page to add a new listing
+@myapp_obj.route('/new-listing', methods=["GET", "POST"])
+#@login_required
+def new_listing():
+    if request.method == "POST":
+        desc = request.form.get("desc")
+        body = request.form.get("body")
+        post = Post(desc=desc, body=body)
+        db.session.add(post)
+        db.session.commit()
+        return redirect(url_for(".display", post_id=post.id))
+    return render_template("new_listing.html")
+
+#directs the user to a listing
+@myapp_obj.get('/listing/<int:post_id>')
+def display(post_id):
+    post = Post.query.filter_by(id=post_id).one()
+    return render_template("listing.html", post=post)
+
 @myapp_obj.route('/logout')
 #@login_required
 def logout():
@@ -111,10 +131,13 @@ def logout():
 
     return "logout"
 
+
 @myapp_obj.route('/discover')
 def discover():
     return render_template("discover.html")
 
+
 @myapp_obj.route('/history')
 def history():
     return render_template("history.html")
+
