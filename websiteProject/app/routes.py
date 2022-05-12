@@ -134,7 +134,9 @@ def logout():
 
 @myapp_obj.route('/discover')
 def discover():
-    return render_template("discover.html")
+    posts = Post.query.order_by(Post.timestamp.desc()).all()
+    
+    return render_template("discover.html", posts=posts)
 
 
 @myapp_obj.route('/history')
