@@ -4,42 +4,17 @@
 {% endblock title %}
 {% block discover %}
   <h2>We Bring You The Best</h2>
-  <style>
-    .row {
-      display: flex;
-      flex-wrap: wrap;
-      padding: 20px;
-    }
-    .column {
-      flex: 50%
-      padding: 20px;
-    }
-    .column img {
-      margin-top: 8px;
-      vertical-align: middle;
-    }
-  </style>
-<div class="row">
-    <div class="column">
-      <img src="https://miro.medium.com/max/1400/1*t4KYR0e9eclZmkFni-wJqg.png" width="300" height="300">
-      <div class="text">Your Business Name Here</div>
-      <img src="https://images.unsplash.com/photo-1471943311424-646960669fbc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c3RpbGwlMjBsaWZlfGVufDB8fDB8fA%3D%3D&w=1000&q=80" width="300" height="300"/>
-      <img src=" " width="300" height="300">
-      <img src=" " width="300" height="300" />
+  <div>
+    {% for post in posts %}
+    <div>
+      <a href="{{ url_for('display', post_id=post.id) }}">
+        <h2 class="post-title">
+          {{ post.desc }}
+        </h2>
+      </a>
     </div>
-    <div class="column">
-      <img src=" " width="300" height="300" />
-      <img src=" " width="300" height="300" />
-      <img src=" " width="300" height="300" />
-      <img src=" " width="300" height="300" />
-    </div>
-    <div class="column">
-      <img src=" " width="300" height="300" />
-      <img src=" " width="300" height="300" />
-      <img src=" " width="300" height="300" />
-      <img src=" " width="300" height="300" />
-    </div>
-</div>
+    {% endfor %}
+  </div>
 {% endblock discover %}
 
     
