@@ -1,3 +1,4 @@
+from unicodedata import name
 from app import db
 from flask_login import UserMixin
 from datetime import datetime
@@ -15,20 +16,9 @@ class User(UserMixin, db.Model):
     def __repr__(self):
         return f'<Email: {self.email}, Name: {self.name}>'
 
-"""class Service(db.Model):
-    id = db.Columm(db.Integer, primary_key=True)
-    title = db.Column(db.String(32))
-    price = db.Column(db.Float)
 
-<<<<<<< HEAD
-    def __repr__(self):
-        return f'<Title: {self.title}, Price: {self.price}>'
-"""
-"""class Post(db.Model):
-=======
 
 class Post(db.Model):
->>>>>>> cab0b97a11dcf4264cdb4dee391e63dab74762db
     id = db.Column(db.Integer, primary_key=True)
     desc = db.Column(db.String(64))
     body = db.Column(db.String(256))
@@ -39,8 +29,8 @@ class Post(db.Model):
         return f'<{self.user_id}, {self.timestamp}: {self.body}>'
 
 class LoginForm(FlaskForm):
-   user = StringField('Name', validators=[DataRequired()])
-   email = StringField('Email', validators=[DataRequired()])
+   #user = StringField('Name', validators=[DataRequired()])
+   name = StringField('Email', validators=[DataRequired()])
    password = PasswordField('Password', validators=[DataRequired()])
    remember_me = BooleanField('Remember Me')
    submit = SubmitField('Login')
