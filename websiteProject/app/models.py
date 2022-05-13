@@ -1,3 +1,4 @@
+from unicodedata import name
 from app import db
 from flask_login import UserMixin
 from datetime import datetime
@@ -28,8 +29,8 @@ class Post(db.Model):
         return f'<{self.user_id}, {self.timestamp}: {self.body}>'
 
 class LoginForm(FlaskForm):
-   user = StringField('Name', validators=[DataRequired()])
-   email = StringField('Email', validators=[DataRequired()])
+   #user = StringField('Name', validators=[DataRequired()])
+   name = StringField('Email', validators=[DataRequired()])
    password = PasswordField('Password', validators=[DataRequired()])
    remember_me = BooleanField('Remember Me')
    submit = SubmitField('Login')

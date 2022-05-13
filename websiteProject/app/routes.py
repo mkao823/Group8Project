@@ -1,3 +1,4 @@
+from unicodedata import name
 from flask_login import current_user
 from .models import LoginForm
 from app import myapp_obj, db
@@ -31,19 +32,19 @@ def createAccount():
         elif password1 != password2:
             flash("Passwords must match", category = "error")
         else:
-            user = User(email = email, name = name, password1 = generate_password_hash(password1, method = 'sha256'))
-            #creates new user with email, name, password
+            user = User(email = email, name = name, password1 = generate_password_hash(password1, method = 'sha256')) 
+            #creates new user with email, name, password, maybe add date_time from class to see when created
             db.session.add(user) #add this created user to our database using this command, then commit 
             db.session.commit()
             #data = request.form //uncommenting out these two lines will print the form data from user input in terminal
             #print(data)
             flash('Account created!', category='success')#message on screen should notify us that account has been created, if not, this is not correct
             #after creating account, we should make sure we login user as well
-            redirect('/')
+            return redirect(url_for('splashPage'))
     return render_template("sign_up.html")
 
 @myapp_obj.route('/delete-account', methods=['GET', 'POST'])
-#@login_required
+@login_required
 def deleteAccount():
     if request.method == 'POST':#once users press the submit button, with the correct email and password, we can delete the account
         email = request.form.get('email')
@@ -56,15 +57,16 @@ def deleteAccount():
             db.session.delete(user)
             db.session.commit()
             flash('Account deleted!', category = 'success')
+            return redirect(url_for('splashPage'))
         else: #if we have login required, the only thing that could be wrong is incorrect email,
             #if we didnt have login_required, its possible that user is not logged in and tries to delete account,
             #without it, this error message below would print no matter wht
             flash("Incorrect email", category = 'error')
     return render_template("delete_account.html")
 
-@myapp_obj.route('/cart')
+@myapp_obj.route('/cart', methods=['GET', 'POST'])
 def addToCart():
-    return "addToCart"
+    return render_template("cart.html")
 
 
 @myapp_obj.route('/profile')
@@ -82,14 +84,15 @@ def login():
     # checks if user puts in correct info
     if form.validate_on_submit():
         print("World")
-        user = User.query.filter_by(username=form.username.data).first()
+        user = User.query.filter_by(name=form.name.data).first()
+        print(user)
         # if user puts wrong info, show error message
         if user is None or not user.check_password(form.password.data):
             flash('Invalid Username or Password')
-            return redirect(url_for('/login'))
+            return redirect(url_for('login'))
         login_user(user)
         flash('You are logged in')
-        return redirect(url_for('/'))
+        return redirect(url_for('splashPage'))
     return render_template("/login.html", title = 'Sign in', form=form)
 
 
@@ -127,9 +130,8 @@ def display(post_id):
 def logout():
     logout_user()
     flash('You have logged yourself out')
-    return redirect('/')
+    return redirect(url_for('splashPage'))
 
-    return "logout"
 
 
 @myapp_obj.route('/discover')
@@ -140,6 +142,7 @@ def discover():
 
 
 @myapp_obj.route('/history')
+@login_required
 def history():
     return render_template("history.html")
 
