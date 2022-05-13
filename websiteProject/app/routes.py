@@ -1,6 +1,6 @@
 from unicodedata import name
 from flask_login import current_user
-from .models import LoginForm
+from .models import LoginForm, ProfileForm
 from app import myapp_obj, db
 
 from flask import render_template, request, flash, redirect, url_for
