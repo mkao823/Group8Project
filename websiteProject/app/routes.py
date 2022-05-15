@@ -83,7 +83,7 @@ def viewCart():
 
 
 @myapp_obj.route('/profile')
-#@login_required
+@login_required
 def profile():
     form = ProfileForm()
     return render_template("/profile.html", form=form)
@@ -91,18 +91,21 @@ def profile():
 @myapp_obj.route('/login', methods=['GET','POST'])
 def login():
     # checks if user is already logged in, redirects to homepage
-    #if current_user.is_authenticated:
-    #    return redirect(url_for('/'))
+    if current_user.is_authenticated:
+        flash('Already logged in')
+        return redirect(url_for('splashPage'))
+
     form = LoginForm()
+    email = form.email.data
+    password = form.password.data
     # checks if user puts in correct info
     if form.validate_on_submit():
-        print("World")
-        user = User.query.filter_by(name=form.name.data).first()
+        user = User.query.filter_by(email=form.email.data).first()
         print(user)
         # if user puts wrong info, show error message
-        if user is None or not user.check_password(form.password.data):
-            flash('Invalid Username or Password')
-            return redirect(url_for('login'))
+       # if user is None or not user.check_password(form.password.data):
+       #     flash('Invalid Username or Password')
+       #     return redirect(url_for('login'))
         login_user(user)
         flash('You are logged in')
         return redirect(url_for('splashPage'))
