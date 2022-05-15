@@ -103,24 +103,14 @@ def login():
         user = User.query.filter_by(email=form.email.data).first()
         print(user)
         # if user puts wrong info, show error message
-       # if user is None or not user.check_password(form.password.data):
-       #     flash('Invalid Username or Password')
-       #     return redirect(url_for('login'))
-        login_user(user)
-        flash('You are logged in')
-        return redirect(url_for('splashPage'))
+        if user is None or check_password_hash(form.password.data, password):
+            flash('Invalid Username or Password')
+            return redirect(url_for('login'))
+        else:
+            login_user(user)
+            flash('You are logged in')
+            return redirect(url_for('splashPage'))
     return render_template("/login.html", title = 'Sign in', form=form)
-
-
-"""
-@myapp_obj.route('/login', methods=['GET', 'POST'])
-def login():
-    current_form = LoginForm()
-    if form.validate_on_submit ():
-        flash('Login requested for user{}, remember_me={}' .format(form.username.data, form.remember_me.data))
-        return redirect('/index')
-    return render_template("login.html", title='Login in', form=current_form)
-"""
 
 #the page to add a new listing
 @myapp_obj.route('/new-listing', methods=["GET", "POST"])
@@ -164,6 +154,19 @@ def discover():
 def history():
     return render_template("history.html")
 
+
+@myapp_obj.route('/editpassword', methods=["GET", "POST"])
+@login_required
+def editPassword():
+    if current_user.is_authenticated:
+        form = LoginForm()
+        email = form.email.data
+        password = form.password.data
+        return redirect(url_for('splashPage'))
+    return render_template("editPassword.html", form=form, user=user)
+
+
+
 #passing things to navbar
 @app.context_processor
 def base():
@@ -176,3 +179,4 @@ def search():
     if form.validate_on_submit():
         post.searched = form.searched.data
         return render_template("search.html", form=form, searched=post.searched)
+
