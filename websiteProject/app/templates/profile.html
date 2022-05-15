@@ -3,33 +3,17 @@
 	Profile
 {% endblock title %}
 {% block sign_up %}
-   <h2> Profile </h2>
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-
-        {% for message in messages %}
-        {{ message }}
-        {% endfor %}
-        {% endif %}
-        {% endwith %}
-
-    {% if user %}
-
-    <h1>
-        User: {{ user }}
-    </h1>
-    {% endif %}
-
-    <ul>
-	    <li>Name: {{ user }} </li>
-	    <li>Email: {{ email }} </li>
-    </ul>
-
-    {% if user %}
-    <h2>
-        Current Email: {{ email }}
-    </h2>
-    {% endif %}
+<style>
+    table {
+	border: 15px
+	background: #9bf6ff;
+    }
+</style>
+    <table>
+	<h1>Profile</h1>
+	<p>Name: {{ current_user.name }}</p>
+	<p>Email: {{ current_user.email }}</p>
+    </table>
 
     <form action ="" method="post" novalidate>
         <input type="submit" name="Edit Password" value="Edit Password">
