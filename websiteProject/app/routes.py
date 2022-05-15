@@ -3,7 +3,7 @@ from flask_login import current_user
 from .models import LoginForm, ProfileForm
 from app import myapp_obj, db
 
-from flask import render_template, request, flash, redirect, url_for
+from flask import render_template, request, flash, redirect, session, url_for
 from flask_wtf import FlaskForm
 
 from flask import current_app as app, render_template, request, redirect, flash, url_for
@@ -27,7 +27,7 @@ def createAccount():
         password2 = request.form.get('password2') 
         #flash("account created", category = "success")
         user = User.query.filter_by(email=email).first()
-        if user:
+        if user: #if user already exists with this email, need to use another email
             flash("User with this email already exists!", category = "error")
         elif password1 != password2:
             flash("Passwords must match", category = "error")
@@ -60,12 +60,25 @@ def deleteAccount():
             return redirect(url_for('splashPage'))
         else: #if we have login required, the only thing that could be wrong is incorrect email,
             #if we didnt have login_required, its possible that user is not logged in and tries to delete account,
-            #without it, this error message below would print no matter wht
+            #without it, this error message below would flash no matter what, as current_user doesnt have value
             flash("Incorrect email", category = 'error')
     return render_template("delete_account.html")
-
-@myapp_obj.route('/cart', methods=['GET', 'POST'])
+#for add to cart functionality, we need two different things
+#1. all items should have an add to cart button in their html page, which is added under listing.html
+#2. Once this button is pressed under the listing, it should be added to the cart. 
+@myapp_obj.route('/addToCart', methods=['GET', 'POST'])
 def addToCart():
+    #id = request.form.get('id')
+    #name = request.form.get('desc')
+    #service = Post.query.filter_by(id=id).first()
+    #if id and name and request.method=="POST":
+        #itemArray = {}
+    return render_template("cart.html")
+
+@myapp_obj.route('/cart')
+def viewCart():
+    #if 'ShoppingCart' not in session:
+        #return redirect(request.referrer) #redirect to most recent webpage
     return render_template("cart.html")
 
 
@@ -126,6 +139,8 @@ def new_listing():
 @myapp_obj.get('/listing/<int:post_id>')
 def display(post_id):
     post = Post.query.filter_by(id=post_id).one()
+    #if request.method == "POST": #if we get a post request in these methods, it will be for add to cart, and we want to commit the item to the cart database
+        #return redirect(url_for("addToCart")) #temp filler
     return render_template("listing.html", post=post)
 
 @myapp_obj.route('/logout')
