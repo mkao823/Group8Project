@@ -201,9 +201,15 @@
           <a class="nav-item nav-link" id="removeAccount" href="/delete-account">Delete Account</a>
           <a class="nav-item nav-link" id="newListing" href="/new-listing">New Listing</a>
           <a class="nav-item nav-link" id="history" href="/history">History</a>
+
           <form method="POST" action="{{url_for('search')}}" class="d-flex">
             {{ form.hidden_tag() }}
             <input class="form-control me-2" type="search" placeholder="Enter Item" aria-label="Search", name="searched">
+
+          <a class="nav-item nav-link" id="cart" href="/cart">Cart</a>
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Enter Item" aria-label="Search">
+
             <button class="btn btn-outline-success" type="submit">Find</button>
           </form>
         </div>
