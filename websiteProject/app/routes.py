@@ -1,6 +1,6 @@
 from unicodedata import name
 from flask_login import current_user
-from .models import LoginForm, ProfileForm
+from .models import LoginForm, ProfileForm, SearchForm
 from app import myapp_obj, db
 
 from flask import render_template, request, flash, redirect, url_for
@@ -149,3 +149,15 @@ def discover():
 def history():
     return render_template("history.html")
 
+#passing things to navbar
+@app.context_processor
+def base():
+    form = SearchForm()
+    return dict(form=form)
+
+@myapp_obj.route('/search', methods=["POST"])
+def search():
+    form = SearchForm()
+    if form.validate_on_submit():
+        post.searched = form.searched.data
+        return render_template("search.html", form=form, searched=post.searched)
