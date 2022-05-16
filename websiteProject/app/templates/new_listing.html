@@ -5,7 +5,7 @@
   <h3>New listing</h3>
   <div class="form-group">
     <label for="desc">Title</label><br>
-    <input type="text" name="desc" id="desc" /><br>
+    <input type="text" name="desc" id="desc"><br>
     <label for="body">Description</label><br>
     <textarea 
       id="body" 
@@ -13,9 +13,19 @@
       maxlength="512"
       rows="5"
       cols="50"
-    >Describe what your listing offers!</textarea>
+      placeholder="Describe what your listing offers!"
+    ></textarea><br>
+    <label for="price">Price</label><br>
+    $<input type="number" name="price" id="price"><br>
+    <label for="tag">Tags</label>
+    <select name="tag" id="tag">
+      <option value="untagged">Untagged</option>
+      <option value="art">Art</option>
+      <option value="music">Music</option>
+      <option value="fitness">Fitness</option>
+    </select>
   </div>
-  <br/>
+  <br>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 </form>

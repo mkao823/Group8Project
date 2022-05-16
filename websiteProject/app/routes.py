@@ -1,27 +1,12 @@
-<<<<<<< HEAD
-from flask_login import current_user
-from .models import LoginForm
-from app import myapp_obj, db
-
-from flask import render_template, request, flash, redirect, url_for
-from flask_wtf import FlaskForm
-
-from flask import current_app as app, render_template, request, redirect, flash, url_for
-
-from .models import User, Post
-from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import login_manager, login_required, logout_user
-=======
 from app import myapp_obj, db
 from flask_login import current_user
 from app.models import LoginForm, ProfileForm
 from flask import render_template, request, flash, redirect, url_for
 from flask_wtf import FlaskForm
 from flask import current_app as app, render_template, request, redirect, flash, url_for
-from .models import User
+from .models import User, Post
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_manager, login_required, logout_user, login_user
->>>>>>> 28d6c6b3a2a59c86f22cfcda4f9ebd2b68658b2d
 
 #should have all our routes, login, logout, create account, etc in this file
 @myapp_obj.route('/')
@@ -38,14 +23,10 @@ def createAccount():
         password1 = request.form.get('password1')
         password2 = request.form.get('password2') 
         #flash("account created", category = "success")
-<<<<<<< HEAD
-        if password1 != password2:
-=======
         user = User.query.filter_by(email=email).first()
         if user:
             flash("User with this email already exists!", category = "error")
         elif password1 != password2:
->>>>>>> 28d6c6b3a2a59c86f22cfcda4f9ebd2b68658b2d
             flash("Passwords must match", category = "error")
         else:
             user = User(email = email, name = name, password1 = generate_password_hash(password1, method = 'sha256'))
@@ -60,15 +41,6 @@ def createAccount():
     return render_template("sign_up.html")
 
 @myapp_obj.route('/delete-account', methods=['GET', 'POST'])
-<<<<<<< HEAD
-def deleteAccount(account):
-    users = User.query.all()
-    #u = User.query.get(int(id))
-    #db.session.delete(u)
-    for u in users:
-        if u == account:
-            db.session.delete(u)
-=======
 @login_required
 def deleteAccount():
     if request.method == 'POST':#once users press the submit button, with the correct email and password, we can delete the account
@@ -86,8 +58,6 @@ def deleteAccount():
             #if we didnt have login_required, its possible that user is not logged in and tries to delete account,
             #without it, this error message below would print no matter wht
             flash("Incorrect email", category = 'error')
-       
->>>>>>> 28d6c6b3a2a59c86f22cfcda4f9ebd2b68658b2d
     return render_template("delete_account.html")
 
 @myapp_obj.route('/cart')
@@ -96,23 +66,6 @@ def addToCart():
 
 
 @myapp_obj.route('/profile')
-<<<<<<< HEAD
-#@login_required
-def profile():
-    return render_template("/profile.html")
-
-"""
-@myapp_obj.route('/login', methods=['GET','POST'])
-def login():  
-    if request.method =='POST':
-        user = SessionUser.find_by_session_id(request.data['user_id'])
-        if user:
-            login_user(user)
-            session['was_once_logged_in'] = True
-            return redirect('/')
-        flash('user not found')
-    return render_template("/login.html")
-=======
 @login_required
 def profile():
     form = ProfileForm()
@@ -136,17 +89,6 @@ def login():
         flash('You are logged in')
         return redirect(url_for('/'))
     return render_template("/login.html", title = 'Sign in', form=form)
->>>>>>> 28d6c6b3a2a59c86f22cfcda4f9ebd2b68658b2d
-
-"""
-@myapp_obj.route('/login', methods=['GET', 'POST'])
-def login():
-    current_form = LoginForm()
-    if form.validate_on_submit ():
-        flash('Login requested for user{}, remember_me={}' .format(form.username.data, form.remember_me.data))
-        return redirect('/index')
-    return render_template("login.html", title='Login in', form=current_form)
-<<<<<<< HEAD
 
 #the page to add a new listing
 @myapp_obj.route('/new-listing', methods=["GET", "POST"])
@@ -155,7 +97,9 @@ def new_listing():
     if request.method == "POST":
         desc = request.form.get("desc")
         body = request.form.get("body")
-        post = Post(desc=desc, body=body)
+        tag = request.form.get("tag")
+        price = request.form.get("price")
+        post = Post(desc=desc, body=body, tag=tag, price=price)
         db.session.add(post)
         db.session.commit()
         return redirect(url_for(".display", post_id=post.id))
@@ -167,9 +111,6 @@ def display(post_id):
     post = Post.query.filter_by(id=post_id).one()
     return render_template("listing.html", post=post)
 
-=======
-"""
->>>>>>> 28d6c6b3a2a59c86f22cfcda4f9ebd2b68658b2d
 @myapp_obj.route('/logout')
 #@login_required
 def logout():
@@ -179,17 +120,20 @@ def logout():
 
     return "logout"
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 28d6c6b3a2a59c86f22cfcda4f9ebd2b68658b2d
+#default discover page, shows posts by most recent posts at the top
 @myapp_obj.route('/discover')
 def discover():
-    return render_template("discover.html")
+    posts = Post.query.order_by(Post.timestamp.desc()).all()
 
-<<<<<<< HEAD
-=======
+    return render_template("discover.html", posts=posts)
+
+#a filtered discover page, filters out posts by the tag
+@myapp_obj.route('/discover/<string:post_tag>')
+def discoverfilter(post_tag):
+    posts = Post.query.order_by(Post.timestamp.desc()).filter_by(tag=post_tag).all()
+
+    return render_template("discover.html", posts=posts)
+
 @myapp_obj.route('/history')
 def history():
     return render_template("history.html")
->>>>>>> 28d6c6b3a2a59c86f22cfcda4f9ebd2b68658b2d

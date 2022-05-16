@@ -19,27 +19,26 @@
       vertical-align: middle;
     }
   </style>
-<div class="row">
-    <div class="column">
-      <img src="https://miro.medium.com/max/1400/1*t4KYR0e9eclZmkFni-wJqg.png" width="300" height="300">
-      <div class="text">Your Business Name Here</div>
-      <img src="https://images.unsplash.com/photo-1471943311424-646960669fbc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c3RpbGwlMjBsaWZlfGVufDB8fDB8fA%3D%3D&w=1000&q=80" width="300" height="300"/>
-      <img src=" " width="300" height="300">
-      <img src=" " width="300" height="300" />
+  <h3>Filter by:</h3>
+  <select onChange="window.location.href=this.value">
+    <option value="/discover">Show all</option>
+    <option value="/discover/untagged">Untagged</option>
+    <option value="/discover/art">Art</option>
+    <option value="/discover/music">Music</option>
+    <option value="/discover/fitness">Fitness</option>
+  </select>
+  <br>
+  <div>
+    {% for post in posts %}
+    <div>
+      <a href="{{ url_for('display', post_id=post.id) }}">
+        <h2 class="post-title">
+          {{ post.desc }}
+        </h2>
+      </a>
     </div>
-    <div class="column">
-      <img src=" " width="300" height="300" />
-      <img src=" " width="300" height="300" />
-      <img src=" " width="300" height="300" />
-      <img src=" " width="300" height="300" />
-    </div>
-    <div class="column">
-      <img src=" " width="300" height="300" />
-      <img src=" " width="300" height="300" />
-      <img src=" " width="300" height="300" />
-      <img src=" " width="300" height="300" />
-    </div>
-</div>
+    {% endfor %}
+  </div>
 {% endblock discover %}
 
     
