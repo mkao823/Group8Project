@@ -205,7 +205,7 @@ def editPassword():
 
 
 #passing things to navbar
-@app.context_processor
+@myapp_obj.context_processor
 def base():
     form = SearchForm()
     return dict(form=form)
@@ -213,7 +213,10 @@ def base():
 @myapp_obj.route('/search', methods=["POST"])
 def search():
     form = SearchForm()
+    post = Post.query
     if form.validate_on_submit():
-        post.searched = form.searched.data
-        return render_template("search.html", form=form, searched=post.searched)
+        input = form.searched.data
+        post = post.filter(Post.desc.like('%' + input + '%'))
+        post = post.order_by(Post.desc).all()
+        return render_template("search.html", form=form, searched=input, post=post)
 
