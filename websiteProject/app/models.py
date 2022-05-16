@@ -38,8 +38,14 @@ class ProfileForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
 
+
 class PasswordForm(FlaskForm):
     old_password = PasswordField('Old Password',validators=[DataRequired()])
     new_password = PasswordField('New Password',validators=[DataRequired()])
     confirm_new_password = PasswordField('Confirm New Password',validators=[DataRequired()])
     submit = SubmitField('Edit Password')
+
+class SearchForm(FlaskForm):
+    searched = StringField("Searched", validators=[DataRequired()])
+    submit = SubmitField("Submit")
+
