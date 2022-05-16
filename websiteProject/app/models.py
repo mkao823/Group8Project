@@ -25,7 +25,7 @@ class Cart(db.Model):
     user=db.relationship('User', back_populates='cart')
 
     def __repr__(self):
-        return f'<{self.user_id}, {self.timestamp}: {self.id}>'
+        return f'<{self.id}, {self.desc}: {self.timestamp}, {self.user}>'
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -65,3 +65,4 @@ class PasswordForm(FlaskForm):
 class SearchForm(FlaskForm):
     searched = StringField("Searched", validators=[DataRequired()])
     submit = SubmitField("Submit")
+

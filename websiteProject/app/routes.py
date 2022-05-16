@@ -1,6 +1,7 @@
 from unicodedata import name
 from flask_login import current_user
 
+
 from .models import ListingForm, LoginForm, ProfileForm, cartForm, PasswordForm, SearchForm
 
 from app import myapp_obj, db
@@ -72,14 +73,22 @@ def addToCart(post_id):
     if request.method=="GET":#when this addToCart() is called from the listing page
         post = Post.query.filter_by(id=post_id).first()
         name = post.desc
+        timestamp = post.timestamp
         user_id = post.user_id
         id = post.id
-
-        cart = Cart(id = id, desc=name, user_id = user_id, user=current_user )
-        db.session.add(cart)
+        cart = Cart.query.all()
+        item = Cart(desc=name, timestamp=timestamp, id=id, user_id = user_id, user=current_user)
+        for product in cart:
+            if product.desc == name:
+                flash('Already in cart')
+                return redirect(url_for('viewCart'))
+        #if item in cart:
+            #flash("Already in cart")
+            #return redirect(url_for('viewCart'))
+        db.session.add(item)
         db.session.commit()
         flash("Added to cart!")
-        print(cart)
+        print(item)
         return redirect(url_for('viewCart'))
     return render_template("cart.html")
 
@@ -87,12 +96,24 @@ def addToCart(post_id):
 @myapp_obj.route('/cart')
 @login_required
 def viewCart():
-    posts = Cart.query.filter_by(user_id=current_user.id).all() #retrieving all the posts in this users cart, basically all items in big communal cart that are associated with currentuser id
+    posts = Cart.query.all() #retrieving all the posts in this users cart, basically all items in big communal cart that are associated with currentuser id
     form = cartForm()
     if form.validate_on_submit: #when delete is pressed on the form
         if form.deleteItem.data:
             db.session.delete(request.form.id)
+            db.session.commit()
+            return redirect(url_for('viewCart'))
     return render_template("cart.html", posts=posts, form=form)
+
+@myapp_obj.route('/emptyCart', methods=['GET'])
+def emptyCart(): #we want this to execute every time we logout, or on command
+    if request.method=="GET":
+        cart = Cart.query.all()
+        print(cart)
+        for item in cart:
+            db.session.delete(item)
+            db.session.commit()
+    return render_template('home.html')
 
 @myapp_obj.route('/profile', methods=['GET','POST'])
 @login_required
@@ -151,9 +172,6 @@ def display(post_id):
         data = form.submitCart.data
         if form.submitCart.data: #if our form has the field for addtocart submitted, then we can redirect to addToCart
             return redirect(url_for("addToCart", post_id=post_id)) 
-    #if request.method == "POST": #if we get a post request in these methods, it will be for add to cart, and we want to commit the item to the cart database
-        #return redirect(url_for("addToCart", post_id=post_id)) 
-    print('hello')
     return render_template("listing.html", post=post, form=form)
 
 @myapp_obj.route('/logout')
@@ -161,8 +179,7 @@ def display(post_id):
 def logout():
     logout_user()
     flash('You have logged yourself out')
-
-    return redirect(url_for('splashPage'))
+    return redirect(url_for('emptyCart'))
 
 #default discover page, shows posts by most recent posts at the top
 @myapp_obj.route('/discover')
@@ -201,19 +218,6 @@ def editPassword():
     if 'Cancel' in request.form:
         return redirect(url_for('profile'))
     return render_template("editpassword.html", form=form)
-
-
-"""@myapp_obj.route('/editpassword', methods=["GET", "POST"])
-@login_required
-def editPassword():
-    if current_user.is_authenticated:
-        form = LoginForm()
-        email = form.email.data
-        password = form.password.data
-        return redirect(url_for('splashPage'))
-    return render_template("editPassword.html", form=form, user=user)"""
-
-
 
 #passing things to navbar
 @myapp_obj.context_processor
