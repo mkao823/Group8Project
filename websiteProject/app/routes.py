@@ -156,7 +156,8 @@ def new_listing():
         body = request.form.get("body")
         tag = request.form.get("tag")
         price = request.form.get("price")
-        post = Post(desc=desc, body=body, tag=tag, price=price)
+        user_id = request.form.get("user_id")
+        post = Post(desc=desc, body=body, tag=tag, price=price, user_id=user_id)
         db.session.add(post)
         db.session.commit()
         flash("Listing created!")
@@ -167,12 +168,13 @@ def new_listing():
 @myapp_obj.route('/listing/<int:post_id>', methods=['GET', 'POST'])
 def display(post_id):
     post = Post.query.filter_by(id=post_id).one()
+    user = User.query.filter_by(id=post.user_id).one()
     form = ListingForm()
     if form.validate_on_submit:
         data = form.submitCart.data
         if form.submitCart.data: #if our form has the field for addtocart submitted, then we can redirect to addToCart
             return redirect(url_for("addToCart", post_id=post_id)) 
-    return render_template("listing.html", post=post, form=form)
+    return render_template("listing.html", post=post, form=form, user=user)
 
 @myapp_obj.route('/logout')
 @login_required
