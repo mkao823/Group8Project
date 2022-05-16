@@ -193,21 +193,8 @@ def editPassword():
         return redirect(url_for('profile'))
     return render_template("editpassword.html", form=form)
 
-
-"""@myapp_obj.route('/editpassword', methods=["GET", "POST"])
-@login_required
-def editPassword():
-    if current_user.is_authenticated:
-        form = LoginForm()
-        email = form.email.data
-        password = form.password.data
-        return redirect(url_for('splashPage'))
-    return render_template("editPassword.html", form=form, user=user)"""
-
-
-
 #passing things to navbar
-@app.context_processor
+@myapp_obj.context_processor
 def base():
     form = SearchForm()
     return dict(form=form)
