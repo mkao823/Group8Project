@@ -1,9 +1,13 @@
 from unicodedata import name
 from flask_login import current_user
 
+<<<<<<< HEAD
 from .models import ListingForm, LoginForm, ProfileForm, cartForm
 
 from .models import LoginForm, ProfileForm, PasswordForm, SearchForm, ListingForm, cartForm
+=======
+from .models import ListingForm, LoginForm, ProfileForm, cartForm, PasswordForm, SearchForm
+>>>>>>> 3e0a3196e65b2935aeabf9ddf1888aa1c07c9838
 
 from app import myapp_obj, db
 
@@ -202,7 +206,10 @@ def base():
 @myapp_obj.route('/search', methods=["POST"])
 def search():
     form = SearchForm()
+    post = Post.query
     if form.validate_on_submit():
-        post.searched = form.searched.data
-        return render_template("search.html", form=form, searched=post.searched)
+        input = form.searched.data
+        post = post.filter(Post.desc.like('%' + input + '%'))
+        post = post.order_by(Post.desc).all()
+        return render_template("search.html", form=form, searched=input, post=post)
 

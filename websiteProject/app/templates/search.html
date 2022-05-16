@@ -1,8 +1,19 @@
 {% extends "base.html" %}
 {% block title %}Search{% endblock %}
-{% block sign_up %}
+{% block discover %}
     <br/>
     <h2>Results Showing For...</h2>
-    <p> {{ searched }}</p>
+    <h4 style="color:blue"> {{ searched }}</h4>
+    <br/>
     
-{% endblock sign_up %}
+    {% for post1 in post %}
+    <div>
+      <a href="{{ url_for('display', post_id=post1.id) }}">
+        <h2 class="post-title">
+       {{ post1.desc }} <br/>
+        </h2>
+      </a>
+    </div>
+    {% endfor %}
+
+{% endblock discover %}
