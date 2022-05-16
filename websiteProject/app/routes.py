@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-from app import myapp_obj, db
-from flask_login import current_user
-from app.models import LoginForm, ProfileForm
-from flask import render_template, request, flash, redirect, url_for
-from flask_wtf import FlaskForm
-from flask import current_app as app, render_template, request, redirect, flash, url_for
-from .models import User, Post
-=======
 from unicodedata import name
 from flask_login import current_user
 
@@ -20,7 +11,6 @@ from flask_wtf import FlaskForm
 from flask import current_app as app, render_template, request, redirect, flash, url_for
 
 from .models import User, Post, Cart
->>>>>>> main
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_manager, login_required, logout_user, login_user
 
@@ -104,12 +94,7 @@ def viewCart():
             db.session.delete(request.form.id)
     return render_template("cart.html", posts=posts, form=form)
 
-<<<<<<< HEAD
-@myapp_obj.route('/profile')
-=======
-
 @myapp_obj.route('/profile', methods=['GET','POST'])
->>>>>>> main
 @login_required
 def profile():
     form = ProfileForm()
@@ -153,6 +138,7 @@ def new_listing():
         post = Post(desc=desc, body=body, tag=tag, price=price)
         db.session.add(post)
         db.session.commit()
+        flash("Listing created!")
         return redirect(url_for(".display", post_id=post.id))
     return render_template("new_listing.html")
 
@@ -175,40 +161,27 @@ def display(post_id):
 def logout():
     logout_user()
     flash('You have logged yourself out')
-<<<<<<< HEAD
-    return redirect('/')
 
-    return "logout"
+    return redirect(url_for('splashPage'))
 
 #default discover page, shows posts by most recent posts at the top
 @myapp_obj.route('/discover')
 def discover():
     posts = Post.query.order_by(Post.timestamp.desc()).all()
-
+    flash("Showing all listings")
     return render_template("discover.html", posts=posts)
 
 #a filtered discover page, filters out posts by the tag
 @myapp_obj.route('/discover/<string:post_tag>')
 def discoverfilter(post_tag):
     posts = Post.query.order_by(Post.timestamp.desc()).filter_by(tag=post_tag).all()
-
+    flash("Showing all listings tagged with " + post_tag)
     return render_template("discover.html", posts=posts)
-=======
-    return redirect(url_for('splashPage'))
-
-@myapp_obj.route('/discover')
-def discover():#view all listings
-    posts = Post.query.order_by(Post.timestamp.desc()).all()
-    return render_template("discover.html", posts=posts)
-
->>>>>>> main
 
 @myapp_obj.route('/history')
 @login_required
 def history():
     return render_template("history.html")
-<<<<<<< HEAD
-=======
 
 @myapp_obj.route('/editPassword', methods=["GET", "POST"])
 @login_required
@@ -257,5 +230,3 @@ def search():
         post = post.filter(Post.desc.like('%' + input + '%'))
         post = post.order_by(Post.desc).all()
         return render_template("search.html", form=form, searched=input, post=post)
-
->>>>>>> main

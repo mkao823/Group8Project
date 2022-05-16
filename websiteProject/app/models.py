@@ -12,13 +12,8 @@ class User(UserMixin, db.Model):
     name = db.Column(db.String(64))
     email = db.Column(db.String(64))
     password1 = db.Column(db.String(128))
-<<<<<<< HEAD
-    posts = db.relationship('Post', backref='author', lazy='dynamic')
-
-=======
     posts = db.relationship('Post', backref='User')
     cart = db.relationship('Cart', back_populates='user')
->>>>>>> main
     def __repr__(self):
         return f'<Email: {self.email}, Name: {self.name}>'
 

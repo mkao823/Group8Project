@@ -4,24 +4,9 @@
 {% endblock title %}
 {% block discover %}
   <h2>We Bring You The Best</h2>
-<<<<<<< HEAD
-  <style>
-    .row {
-      display: flex;
-      flex-wrap: wrap;
-      padding: 20px;
-    }
-    .column {
-      flex: 50%
-      padding: 20px;
-    }
-    .column img {
-      margin-top: 8px;
-      vertical-align: middle;
-    }
-  </style>
   <h3>Filter by:</h3>
   <select onChange="window.location.href=this.value">
+    <option></option>
     <option value="/discover">Show all</option>
     <option value="/discover/untagged">Untagged</option>
     <option value="/discover/art">Art</option>
@@ -29,8 +14,6 @@
     <option value="/discover/fitness">Fitness</option>
   </select>
   <br>
-=======
->>>>>>> main
   <div>
     {% for post in posts %}
     <div>
