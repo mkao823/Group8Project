@@ -1,6 +1,7 @@
 from unicodedata import name
 from flask_login import current_user
-from .models import LoginForm, ProfileForm
+from sqlalchemy import true
+from .models import ListingForm, LoginForm, ProfileForm, cartForm
 from app import myapp_obj, db
 
 from flask import render_template, request, flash, redirect, session, url_for
@@ -8,10 +9,9 @@ from flask_wtf import FlaskForm
 
 from flask import current_app as app, render_template, request, redirect, flash, url_for
 
-from .models import User, Post
+from .models import User, Post, Cart
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_manager, login_required, logout_user, login_user
-
 
 #should have all our routes, login, logout, create account, etc in this file
 @myapp_obj.route('/')
@@ -38,6 +38,7 @@ def createAccount():
             db.session.commit()
             #data = request.form //uncommenting out these two lines will print the form data from user input in terminal
             #print(data)
+            login_user(user)
             flash('Account created!', category='success')#message on screen should notify us that account has been created, if not, this is not correct
             #after creating account, we should make sure we login user as well
             return redirect(url_for('splashPage'))
@@ -51,8 +52,6 @@ def deleteAccount():
         #not sure if name will be needed, duplicate emails are not allowed, so good way to check
         #using this email, we should find the user associated and delete from database
         user = User.query.filter_by(email=email).first()
-        print(current_user)
-        print(user)
         if current_user == user:
             db.session.delete(user)
             db.session.commit()
@@ -66,20 +65,33 @@ def deleteAccount():
 #for add to cart functionality, we need two different things
 #1. all items should have an add to cart button in their html page, which is added under listing.html
 #2. Once this button is pressed under the listing, it should be added to the cart. 
-@myapp_obj.route('/addToCart', methods=['GET', 'POST'])
-def addToCart():
-    #id = request.form.get('id')
-    #name = request.form.get('desc')
-    #service = Post.query.filter_by(id=id).first()
-    #if id and name and request.method=="POST":
-        #itemArray = {}
+@myapp_obj.route('/addToCart/<int:post_id>', methods=['GET', 'POST'])
+@login_required
+def addToCart(post_id):
+    if request.method=="GET":#when this addToCart() is called from the listing page
+        post = Post.query.filter_by(id=post_id).first()
+        name = post.desc
+        user_id = post.user_id
+        id = post.id
+
+        cart = Cart(id = id, desc=name, user_id = user_id, user=current_user )
+        db.session.add(cart)
+        db.session.commit()
+        flash("Added to cart!")
+        print(cart)
+        return redirect(url_for('viewCart'))
     return render_template("cart.html")
 
+
 @myapp_obj.route('/cart')
+@login_required
 def viewCart():
-    #if 'ShoppingCart' not in session:
-        #return redirect(request.referrer) #redirect to most recent webpage
-    return render_template("cart.html")
+    posts = Cart.query.filter_by(user_id=current_user.id).all() #retrieving all the posts in this users cart, basically all items in big communal cart that are associated with currentuser id
+    form = cartForm()
+    if form.validate_on_submit: #when delete is pressed on the form
+        if form.deleteItem.data:
+            db.session.delete(request.form.id)
+    return render_template("cart.html", posts=posts, form=form)
 
 
 @myapp_obj.route('/profile')
@@ -111,20 +123,9 @@ def login():
         return redirect(url_for('splashPage'))
     return render_template("/login.html", title = 'Sign in', form=form)
 
-
-"""
-@myapp_obj.route('/login', methods=['GET', 'POST'])
-def login():
-    current_form = LoginForm()
-    if form.validate_on_submit ():
-        flash('Login requested for user{}, remember_me={}' .format(form.username.data, form.remember_me.data))
-        return redirect('/index')
-    return render_template("login.html", title='Login in', form=current_form)
-"""
-
 #the page to add a new listing
 @myapp_obj.route('/new-listing', methods=["GET", "POST"])
-#@login_required
+@login_required
 def new_listing():
     if request.method == "POST":
         desc = request.form.get("desc")
@@ -136,12 +137,18 @@ def new_listing():
     return render_template("new_listing.html")
 
 #directs the user to a listing
-@myapp_obj.get('/listing/<int:post_id>')
+@myapp_obj.route('/listing/<int:post_id>', methods=['GET', 'POST'])
 def display(post_id):
     post = Post.query.filter_by(id=post_id).one()
+    form = ListingForm()
+    if form.validate_on_submit:
+        data = form.submitCart.data
+        if form.submitCart.data: #if our form has the field for addtocart submitted, then we can redirect to addToCart
+            return redirect(url_for("addToCart", post_id=post_id)) 
     #if request.method == "POST": #if we get a post request in these methods, it will be for add to cart, and we want to commit the item to the cart database
-        #return redirect(url_for("addToCart")) #temp filler
-    return render_template("listing.html", post=post)
+        #return redirect(url_for("addToCart", post_id=post_id)) 
+    print('hello')
+    return render_template("listing.html", post=post, form=form)
 
 @myapp_obj.route('/logout')
 #@login_required
@@ -153,9 +160,8 @@ def logout():
 
 
 @myapp_obj.route('/discover')
-def discover():
+def discover():#view all listings
     posts = Post.query.order_by(Post.timestamp.desc()).all()
-    
     return render_template("discover.html", posts=posts)
 
 
