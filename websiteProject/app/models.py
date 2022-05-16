@@ -25,7 +25,7 @@ class Cart(db.Model):
     user=db.relationship('User', back_populates='cart')
 
     def __repr__(self):
-        return f'<{self.user_id}, {self.timestamp}: {self.id}>'
+        return f'<{self.id}, {self.desc}: {self.timestamp}, {self.user}>'
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -47,20 +47,12 @@ class ProfileForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 3e0a3196e65b2935aeabf9ddf1888aa1c07c9838
 class ListingForm(FlaskForm):
     submitCart = SubmitField("Add to Cart")
     #purchase = SubmitField("Purchase")
 
 class cartForm(FlaskForm):
     deleteItem = SubmitField("Delete")
-<<<<<<< HEAD
-    
-=======
->>>>>>> 3e0a3196e65b2935aeabf9ddf1888aa1c07c9838
 
 class PasswordForm(FlaskForm):
     old_password = PasswordField('Old Password',validators=[DataRequired()])
@@ -71,7 +63,4 @@ class PasswordForm(FlaskForm):
 class SearchForm(FlaskForm):
     searched = StringField("Searched", validators=[DataRequired()])
     submit = SubmitField("Submit")
-<<<<<<< HEAD
 
-=======
->>>>>>> 3e0a3196e65b2935aeabf9ddf1888aa1c07c9838

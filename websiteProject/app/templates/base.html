@@ -194,23 +194,29 @@
           
           <a class="nav-item nav-link" id="home" href="/">Home</a>
           <a class="nav-item nav-link" id="discover" href="/discover">Discover</a>
-	        <a class="nav-item nav-link" id="User Profile" href="/profile">Profile</a>
 	        <a class="nav-item nav-link" id="login" href="/login">Login</a>
           <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
           <a class="nav-item nav-link" id="signUp" href="/sign-up">Create Account</a>
-          <a class="nav-item nav-link" id="removeAccount" href="/delete-account">Delete Account</a>
           <a class="nav-item nav-link" id="newListing" href="/new-listing">New Listing</a>
-          <a class="nav-item nav-link" id="history" href="/history">History</a>
           
           <form class="d-flex">
             <a class="nav-item nav-link" id="cart" href="/cart">Cart</a>
           </form>
-
+          <a class="nav-item nav-link" id="emptyCart" href="/emptyCart">Empty cart</a>
           <form method="POST" action="{{url_for('search')}}" class="d-flex">
             {{ form.hidden_tag() }}
             <input class="form-control me-2" type="search" placeholder="Enter Item" aria-label="Search", name="searched">
             <button class="btn btn-outline-success" type="submit">Find</button>
           </form>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="/profile">Profile</a></li>
+              <li><a class="dropdown-item" href="/delete-account">Delete Account</a></li>
+              <li><a class="dropdown-item" href="/history">History</a></li>
+            </ul>
+          </li>
         </div>
       </div>
     </nav>
