@@ -154,9 +154,13 @@ def new_listing():
     if request.method == "POST":
         desc = request.form.get("desc")
         body = request.form.get("body")
-        post = Post(desc=desc, body=body)
+        tag = request.form.get("tag")
+        price = request.form.get("price")
+        user_id = request.form.get("user_id")
+        post = Post(desc=desc, body=body, tag=tag, price=price, user_id=user_id)
         db.session.add(post)
         db.session.commit()
+        flash("Listing created!")
         return redirect(url_for(".display", post_id=post.id))
     return render_template("new_listing.html")
 
@@ -164,12 +168,13 @@ def new_listing():
 @myapp_obj.route('/listing/<int:post_id>', methods=['GET', 'POST'])
 def display(post_id):
     post = Post.query.filter_by(id=post_id).one()
+    user = User.query.filter_by(id=post.user_id).one()
     form = ListingForm()
     if form.validate_on_submit:
         data = form.submitCart.data
         if form.submitCart.data: #if our form has the field for addtocart submitted, then we can redirect to addToCart
             return redirect(url_for("addToCart", post_id=post_id)) 
-    return render_template("listing.html", post=post, form=form)
+    return render_template("listing.html", post=post, form=form, user=user)
 
 @myapp_obj.route('/logout')
 @login_required
@@ -178,11 +183,19 @@ def logout():
     flash('You have logged yourself out')
     return redirect(url_for('emptyCart'))
 
+#default discover page, shows posts by most recent posts at the top
 @myapp_obj.route('/discover')
-def discover():#view all listings
+def discover():
     posts = Post.query.order_by(Post.timestamp.desc()).all()
+    flash("Showing all listings")
     return render_template("discover.html", posts=posts)
 
+#a filtered discover page, filters out posts by the tag
+@myapp_obj.route('/discover/<string:post_tag>')
+def discoverfilter(post_tag):
+    posts = Post.query.order_by(Post.timestamp.desc()).filter_by(tag=post_tag).all()
+    flash("Showing all listings tagged with " + post_tag)
+    return render_template("discover.html", posts=posts)
 
 @myapp_obj.route('/history')
 @login_required
@@ -223,4 +236,3 @@ def search():
         post = post.filter(Post.desc.like('%' + input + '%'))
         post = post.order_by(Post.desc).all()
         return render_template("search.html", form=form, searched=input, post=post)
-

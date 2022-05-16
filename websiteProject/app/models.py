@@ -33,6 +33,8 @@ class Post(db.Model):
     body = db.Column(db.String(256))
     timestamp = db.Column(db.DateTime, default=datetime.utcnow())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    price = db.Column(db.String(64))
+    tag = db.Column(db.String(64))
 
     def __repr__(self):
         return f'<{self.user_id}, {self.timestamp}: {self.body}>'
