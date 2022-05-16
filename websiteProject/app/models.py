@@ -1,3 +1,4 @@
+from unicodedata import name
 from app import db
 from flask_login import UserMixin
 from datetime import datetime
@@ -11,11 +12,25 @@ class User(UserMixin, db.Model):
     name = db.Column(db.String(64))
     email = db.Column(db.String(64))
     password1 = db.Column(db.String(128))
+<<<<<<< HEAD
     posts = db.relationship('Post', backref='author', lazy='dynamic')
 
+=======
+    posts = db.relationship('Post', backref='User')
+    cart = db.relationship('Cart', back_populates='user')
+>>>>>>> main
     def __repr__(self):
         return f'<Email: {self.email}, Name: {self.name}>'
 
+class Cart(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    desc = db.Column(db.String(64))
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow())
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user=db.relationship('User', back_populates='cart')
+
+    def __repr__(self):
+        return f'<{self.user_id}, {self.timestamp}: {self.id}>'
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -30,12 +45,28 @@ class Post(db.Model):
         return f'<{self.user_id}, {self.timestamp}: {self.body}>'
 
 class LoginForm(FlaskForm):
-   user = StringField('Name', validators=[DataRequired()])
-   email = StringField('Email', validators=[DataRequired()])
-   password = PasswordField('Password', validators=[DataRequired()])
-   remember_me = BooleanField('Remember Me')
-   submit = SubmitField('Login')
+    email = StringField('Email', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    remember_me = BooleanField('Remember Me')
+    submit = SubmitField('Login')
 
 class ProfileForm(FlaskForm):
-    user = StringField('Name', validators=[DataRequired()])
+    name = StringField('Name', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
+
+class ListingForm(FlaskForm):
+    submitCart = SubmitField("Add to Cart")
+    #purchase = SubmitField("Purchase")
+
+class cartForm(FlaskForm):
+    deleteItem = SubmitField("Delete")
+
+class PasswordForm(FlaskForm):
+    old_password = PasswordField('Old Password',validators=[DataRequired()])
+    new_password = PasswordField('New Password',validators=[DataRequired()])
+    confirm_new_password = PasswordField('Confirm New Password',validators=[DataRequired()])
+    submit = SubmitField('Edit Password')
+
+class SearchForm(FlaskForm):
+    searched = StringField("Searched", validators=[DataRequired()])
+    submit = SubmitField("Submit")

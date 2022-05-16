@@ -8,6 +8,8 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 myapp_obj = Flask(__name__)
 
+myapp_obj.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
 myapp_obj.config.from_mapping(
     SECRET_KEY = 'you-will-never-guess',
     # where to store app.db (database file)
@@ -22,7 +24,6 @@ from .models import User
 def createDatabase(app):
     if not path.exists('websiteProject/' + 'app.db'):
         db.create_all(app=app)
-        print("Created db")
 
 #createDatabase(myapp_obj) //moved to run.py file instead
 

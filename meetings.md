@@ -37,24 +37,24 @@
 - Summary: Team discussed on how to get started on implementing the site. We decided on using the codes we reviewed in class as a starting point as most of it has some of the basic functions we need. Rest of the class was to brainstorm which functional requirements should be done first.
 
 ### 2022-05-03 at 17:45
-- Team members attended -
+- Team members attended - Hetal, Jonathan, Michael, William
 - Team Updates:
-  - <Hetal> worked on
-  - <Jonathan> worked on
-  - <Michael> worked on
-  - <William> worked on
+  - <Hetal> worked on doing the required functional requirements.
+  - <Jonathan> worked on worked on doing the required functional requirements.
+  - <Michael> worked on worked on doing the required functional requirements.
+  - <William> worked on worked on doing the required functional requirements.
 
-- Summary:
+- Summary: Team worked on the functional requirements needed for the website. Team discussed which functions should be done over the next few days.
 
 ### 2022-05-05 at 17:45
-- Team members attended -
+- Team members attended - Jonathan, Michael, William
 - Team Updates:
-  - <Hetal> worked on
-  - <Jonathan> worked on
-  - <Michael> worked on
-  - <William> worked on
+  - <Hetal> worked at home doing the required functional requirements.
+  - <Jonathan> worked on re-doing the requirement's page.
+  - <Michael> worked on setting up the database and doing the required functional requirements.
+  - <William> worked on finishing up the required functional requirements.
 
-- Summary:
+- Summary: Team discussed on re-doing some of the functional requirements. This includes moving splash page to non-functional, making a history tab, having a profile to edit their information, buy a service/item with a fake paying method and adding a new listing. Some of use cases were changed to include some more details. Rest of the class was to focus on the 10 functional requirements for the website.
 
 ### 2022-05-10 at 17:45
 - Project Presentation
