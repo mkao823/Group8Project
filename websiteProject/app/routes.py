@@ -1,6 +1,8 @@
 from unicodedata import name
 from flask_login import current_user
-from .models import LoginForm, ProfileForm, SearchForm
+
+from .models import LoginForm, ProfileForm, PasswordForm, SearchForm
+
 from app import myapp_obj, db
 
 from flask import render_template, request, flash, redirect, session, url_for
@@ -82,10 +84,12 @@ def viewCart():
     return render_template("cart.html")
 
 
-@myapp_obj.route('/profile')
+@myapp_obj.route('/profile', methods=['GET','POST'])
 @login_required
 def profile():
     form = ProfileForm()
+    if 'Edit Password' in request.form:
+        return redirect(url_for('editPassword'))
     return render_template("/profile.html", form=form)
 
 @myapp_obj.route('/login', methods=['GET','POST'])
@@ -134,13 +138,11 @@ def display(post_id):
     return render_template("listing.html", post=post)
 
 @myapp_obj.route('/logout')
-#@login_required
+@login_required
 def logout():
     logout_user()
     flash('You have logged yourself out')
     return redirect(url_for('splashPage'))
-
-
 
 @myapp_obj.route('/discover')
 def discover():
@@ -154,8 +156,27 @@ def discover():
 def history():
     return render_template("history.html")
 
+@myapp_obj.route('/editPassword', methods=["GET", "POST"])
+@login_required
+def editPassword():
+    user = current_user
+    form = PasswordForm()
+    if form.validate_on_submit():
+        old_password = form.old_password.data
+        new_password = new_password.data
+        confirm_new_password = confirm_new_password.data
+        if new_password == confirm_new_password:
+            db.session.commit()
+            flash('Password has been changed')
+            return redirect(url_for('profile'))
+        else:
+            flash('Passwords do not match')
+    if 'Cancel' in request.form:
+        return redirect(url_for('profile'))
+    return render_template("editpassword.html", form=form)
 
-@myapp_obj.route('/editpassword', methods=["GET", "POST"])
+
+"""@myapp_obj.route('/editpassword', methods=["GET", "POST"])
 @login_required
 def editPassword():
     if current_user.is_authenticated:
@@ -163,7 +184,7 @@ def editPassword():
         email = form.email.data
         password = form.password.data
         return redirect(url_for('splashPage'))
-    return render_template("editPassword.html", form=form, user=user)
+    return render_template("editPassword.html", form=form, user=user)"""
 
 
 
