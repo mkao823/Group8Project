@@ -38,15 +38,15 @@ class Post(db.Model):
         return f'<{self.user_id}, {self.timestamp}: {self.body}>'
 
 class LoginForm(FlaskForm):
-   #user = StringField('Name', validators=[DataRequired()])
-   email = StringField('Email', validators=[DataRequired()])
-   password = PasswordField('Password', validators=[DataRequired()])
-   remember_me = BooleanField('Remember Me')
-   submit = SubmitField('Login')
+    email = StringField('Email', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    remember_me = BooleanField('Remember Me')
+    submit = SubmitField('Login')
 
 class ProfileForm(FlaskForm):
-    user = StringField('Name', validators=[DataRequired()])
+    name = StringField('Name', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
+
 
 class ListingForm(FlaskForm):
     submitCart = SubmitField("Add to Cart")
@@ -55,3 +55,14 @@ class ListingForm(FlaskForm):
 class cartForm(FlaskForm):
     deleteItem = SubmitField("Delete")
     
+
+class PasswordForm(FlaskForm):
+    old_password = PasswordField('Old Password',validators=[DataRequired()])
+    new_password = PasswordField('New Password',validators=[DataRequired()])
+    confirm_new_password = PasswordField('Confirm New Password',validators=[DataRequired()])
+    submit = SubmitField('Edit Password')
+
+class SearchForm(FlaskForm):
+    searched = StringField("Searched", validators=[DataRequired()])
+    submit = SubmitField("Submit")
+

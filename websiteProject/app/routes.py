@@ -1,7 +1,10 @@
 from unicodedata import name
 from flask_login import current_user
-from sqlalchemy import true
+
 from .models import ListingForm, LoginForm, ProfileForm, cartForm
+
+from .models import LoginForm, ProfileForm, PasswordForm, SearchForm, ListingForm, cartForm
+
 from app import myapp_obj, db
 
 from flask import render_template, request, flash, redirect, session, url_for
@@ -94,10 +97,12 @@ def viewCart():
     return render_template("cart.html", posts=posts, form=form)
 
 
-@myapp_obj.route('/profile')
+@myapp_obj.route('/profile', methods=['GET','POST'])
 @login_required
 def profile():
     form = ProfileForm()
+    if 'Edit Password' in request.form:
+        return redirect(url_for('editPassword'))
     return render_template("/profile.html", form=form)
 
 @myapp_obj.route('/login', methods=['GET','POST'])
@@ -115,12 +120,13 @@ def login():
         user = User.query.filter_by(email=form.email.data).first()
         print(user)
         # if user puts wrong info, show error message
-       # if user is None or not user.check_password(form.password.data):
-       #     flash('Invalid Username or Password')
-       #     return redirect(url_for('login'))
-        login_user(user)
-        flash('You are logged in')
-        return redirect(url_for('splashPage'))
+        if user is None or check_password_hash(form.password.data, password):
+            flash('Invalid Username or Password')
+            return redirect(url_for('login'))
+        else:
+            login_user(user)
+            flash('You are logged in')
+            return redirect(url_for('splashPage'))
     return render_template("/login.html", title = 'Sign in', form=form)
 
 #the page to add a new listing
@@ -151,13 +157,11 @@ def display(post_id):
     return render_template("listing.html", post=post, form=form)
 
 @myapp_obj.route('/logout')
-#@login_required
+@login_required
 def logout():
     logout_user()
     flash('You have logged yourself out')
     return redirect(url_for('splashPage'))
-
-
 
 @myapp_obj.route('/discover')
 def discover():#view all listings
@@ -169,4 +173,49 @@ def discover():#view all listings
 @login_required
 def history():
     return render_template("history.html")
+
+@myapp_obj.route('/editPassword', methods=["GET", "POST"])
+@login_required
+def editPassword():
+    user = current_user
+    form = PasswordForm()
+    if form.validate_on_submit():
+        old_password = form.old_password.data
+        new_password = new_password.data
+        confirm_new_password = confirm_new_password.data
+        if new_password == confirm_new_password:
+            db.session.commit()
+            flash('Password has been changed')
+            return redirect(url_for('profile'))
+        else:
+            flash('Passwords do not match')
+    if 'Cancel' in request.form:
+        return redirect(url_for('profile'))
+    return render_template("editpassword.html", form=form)
+
+
+"""@myapp_obj.route('/editpassword', methods=["GET", "POST"])
+@login_required
+def editPassword():
+    if current_user.is_authenticated:
+        form = LoginForm()
+        email = form.email.data
+        password = form.password.data
+        return redirect(url_for('splashPage'))
+    return render_template("editPassword.html", form=form, user=user)"""
+
+
+
+#passing things to navbar
+@app.context_processor
+def base():
+    form = SearchForm()
+    return dict(form=form)
+
+@myapp_obj.route('/search', methods=["POST"])
+def search():
+    form = SearchForm()
+    if form.validate_on_submit():
+        post.searched = form.searched.data
+        return render_template("search.html", form=form, searched=post.searched)
 
