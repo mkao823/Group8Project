@@ -10,13 +10,17 @@
                 <th>Delete</th>
             </thead>
             <tbody>
+                {% for service in posts %}
                 <tr>
+                    <td>{{loop.index}}</td>
+                    <td>{{service.desc}}</td>
                     <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><a href="#">Delete</a></td>
+                    <td><form method="POST" action="">
+                        {{ form.hidden_tag() }}
+                          {{ form.deleteItem(class="btn btn-outline-info") }}
+                      </form></td>
                 </tr>
-
+                {% endfor %}
             </tbody>
         </table>
     </div>

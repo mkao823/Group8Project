@@ -3,7 +3,8 @@
 {% block sign_up %}
   <h3>{{ post.desc }}</h3>
   <p>{{ post.body }}</p>
-  <form method="POST">
-    <button type="submit" class="btn btn-primary">Add To Cart</button>
+  <form method="POST" action="">
+    {{ form.hidden_tag() }}
+      {{ form.submitCart(class="btn btn-outline-info") }}
   </form>
 {% endblock sign_up %}

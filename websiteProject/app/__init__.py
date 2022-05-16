@@ -22,7 +22,6 @@ from .models import User
 def createDatabase(app):
     if not path.exists('websiteProject/' + 'app.db'):
         db.create_all(app=app)
-        print("Created db")
 
 #createDatabase(myapp_obj) //moved to run.py file instead
 
