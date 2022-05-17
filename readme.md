@@ -15,15 +15,16 @@ Simple Ecom site with various funcionalities that allows sellers to post service
 
 ## Functional Requirements
 - Login
-- Logout
-- Create New Account
-- Delete Account
+- Logout: Jonathan Lei
+- Create New Account: Michael Kao
+- Delete Account: Michael Kao
 - History to see past purchases
 - User Profile to edit information
 - Buy item with fake paying method
 - Add a new listing
 - Find Item
-- Add to Cart
+- Add to Cart: Michael Kao
+  -Empty Cart, Remove from Cart
 - See All Items Available from All of the Sellers
 - Filter by Categories
 
@@ -32,7 +33,7 @@ Simple Ecom site with various funcionalities that allows sellers to post service
 - Webpage should load quickly to show that it is not unresponsive
 - Users should not be able to see others' transactions
 - Users can set links to other sites on their profile
-- Splash Page
+- Splash Page: 
 
 ## Technologies
 Project is created with:
