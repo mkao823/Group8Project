@@ -24,10 +24,14 @@ Simple Ecom site with various funcionalities that allows sellers to post service
 - Add a new listing
 - Find Item
 - Add to Cart: Michael Kao
-  -Empty Cart, Remove from Cart
 - See All Items Available from All of the Sellers
 - Filter by Categories
 
+## Additional Requirements
+- Remove from cart: Michael Kao
+- Empty cart: Michael Kao
+- Edit Password
+- 
 ## Non-Functional Requirements
 - Sellers should be notified of a new job
 - Webpage should load quickly to show that it is not unresponsive
