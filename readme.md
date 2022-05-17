@@ -11,18 +11,18 @@
 * [Team Members](#team-members)
 
 ## General Info
-Simple Ecom site with various funcionalities that allows sellers to post services to sell.
+Simple Ecom site with various funcionalities that allows sellers to post services to sell and users to browse/buy.
 
 ## Functional Requirements
-- Login
+- Login: Jonathan Lei
 - Logout: Jonathan Lei
 - Create New Account: Michael Kao
 - Delete Account: Michael Kao
 - History to see past purchases
-- User Profile to edit information
-- Buy item with fake paying method
+- User Profile to edit information: Jonathan Lei
+- Buy item with fake paying method: 
 - Add a new listing: William Tran
-- Find Item
+- Find Item:
 - Add to Cart: Michael Kao
 - See All Items Available from All of the Sellers: William Tran
 - Filter by Categories: William Tran
@@ -30,8 +30,8 @@ Simple Ecom site with various funcionalities that allows sellers to post service
 ## Additional Requirements
 - Remove from cart: Michael Kao
 - Empty cart: Michael Kao
-- Edit Password
-- 
+- Edit Password: Jonathan Lei
+
 ## Non-Functional Requirements
 - Sellers should be notified of a new job
 - Webpage should load quickly to show that it is not unresponsive
