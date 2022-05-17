@@ -18,11 +18,11 @@ Simple Ecom site with various funcionalities that allows sellers to post service
 - Logout: Jonathan Lei
 - Create New Account: Michael Kao
 - Delete Account: Michael Kao
-- History to see past purchases
+- History to see past purchases: Hetal Halani
 - User Profile to edit information: Jonathan Lei
 - Buy item with fake paying method: Jonathan Lei
 - Add a new listing: William Tran
-- Find Item
+- Find Item: Hetal Halani
 - Add to Cart: Michael Kao
 - See All Items Available from All of the Sellers: William Tran
 - Filter by Categories: William Tran
