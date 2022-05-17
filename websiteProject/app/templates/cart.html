@@ -7,21 +7,27 @@
                 <th>Count</th>
                 <th>Name</th>
                 <th>Price</th>
-                <th>Delete</th>
             </thead>
             <tbody>
                 {% for service in posts %}
+                
                 <tr>
                     <td>{{loop.index}}</td>
                     <td>{{service.desc}}</td>
-                    <td></td>
-                    <td><form method="POST" action="">
-                        {{ form.hidden_tag() }}
-                          {{ form.deleteItem(class="btn btn-outline-info") }}
-                      </form></td>
+                    <td>{{service.price + "$"}}</td>
+                    <td> <a href="{{url_for('removeFromCart', post_id=service.id)}}" class="btn btn-sm btn-danger">Delete</a></td>
                 </tr>
                 {% endfor %}
+                <form method="POST" action="">
+                    {{ form.hidden_tag() }}
+                      {{ form.emptyCart(class="btn btn-outline-info") }}
+                </form>
             </tbody>
+        </table>
+        <table class="table table-sm">
+            <thead>
+                <td><h2 style="text-align:right">Total: ${{total}}</h2></td>
+            </thead>
         </table>
     </div>
 </div>

@@ -20,6 +20,7 @@ class User(UserMixin, db.Model):
 class Cart(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     desc = db.Column(db.String(64))
+    price = db.Column(db.String(64))
     timestamp = db.Column(db.DateTime, default=datetime.utcnow())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     user=db.relationship('User', back_populates='cart')
@@ -54,7 +55,8 @@ class ListingForm(FlaskForm):
     #purchase = SubmitField("Purchase")
 
 class cartForm(FlaskForm):
-    deleteItem = SubmitField("Delete")
+    emptyCart = SubmitField("Empty Cart")
+    
 
 class PasswordForm(FlaskForm):
     old_password = PasswordField('Old Password',validators=[DataRequired()])
