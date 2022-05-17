@@ -236,3 +236,10 @@ def search():
         post = post.filter(Post.desc.like('%' + input + '%'))
         post = post.order_by(Post.desc).all()
         return render_template("search.html", form=form, searched=input, post=post)
+
+@myapp_obj.route('/questions')
+def question():
+    if request.method == "POST":
+        question = request.form.get("question")
+        flash("sumbitted!")
+    return render_template("questions.html")
