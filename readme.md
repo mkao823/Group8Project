@@ -21,11 +21,11 @@ Simple Ecom site with various funcionalities that allows sellers to post service
 - History to see past purchases
 - User Profile to edit information
 - Buy item with fake paying method
-- Add a new listing
+- Add a new listing: William Tran
 - Find Item
 - Add to Cart: Michael Kao
-- See All Items Available from All of the Sellers
-- Filter by Categories
+- See All Items Available from All of the Sellers: William Tran
+- Filter by Categories: William Tran
 
 ## Additional Requirements
 - Remove from cart: Michael Kao
@@ -37,7 +37,7 @@ Simple Ecom site with various funcionalities that allows sellers to post service
 - Webpage should load quickly to show that it is not unresponsive
 - Users should not be able to see others' transactions
 - Users can set links to other sites on their profile
-- Splash Page: 
+- Splash Page: William Tran
 
 ## Technologies
 Project is created with:
