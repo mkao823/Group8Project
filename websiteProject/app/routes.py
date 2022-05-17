@@ -76,8 +76,9 @@ def addToCart(post_id):
         timestamp = post.timestamp
         user_id = post.user_id
         id = post.id
+        price = post.price
         cart = Cart.query.all()
-        item = Cart(desc=name, timestamp=timestamp, id=id, user_id = user_id, user=current_user)
+        item = Cart(desc=name, timestamp=timestamp, id=id, price=price, user_id = user_id, user=current_user)
         for product in cart:
             if product.desc == name:
                 flash('Already in cart')
@@ -93,17 +94,28 @@ def addToCart(post_id):
     return render_template("cart.html")
 
 
-@myapp_obj.route('/cart')
+@myapp_obj.route('/cart', methods=['GET', 'POST'])
 @login_required
 def viewCart():
     posts = Cart.query.all() #retrieving all the posts in this users cart, basically all items in big communal cart that are associated with currentuser id
+    total=0
+    for item in posts:
+        total += int(item.price)
     form = cartForm()
     if form.validate_on_submit: #when delete is pressed on the form
-        if form.deleteItem.data:
-            db.session.delete(request.form.id)
+        if form.emptyCart.data:
+            return redirect(url_for('emptyCart'))
+    return render_template("cart.html", posts=posts, form=form, total=total)
+
+@myapp_obj.route('/remove/<int:post_id>', methods=['GET', 'POST'])
+def removeFromCart(post_id):
+    cart = Cart.query.all()
+    for item in cart:
+        if item.id == post_id:
+            db.session.delete(item)
             db.session.commit()
+            flash('Removed item from cart')
             return redirect(url_for('viewCart'))
-    return render_template("cart.html", posts=posts, form=form)
 
 @myapp_obj.route('/emptyCart', methods=['GET'])
 def emptyCart(): #we want this to execute every time we logout, or on command
