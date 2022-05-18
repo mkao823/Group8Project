@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %} FAQ {% endblock %}
+{% block sign_up %}
+<form method="POST">
+  <h3> ECOM </h3>
+  <div class = "form-group">
+    <label for="question"> How can we help you: </label><br>
+    <textarea
+      id="body"
+      name="body"
+      maxlength="300"
+      rows="2"
+      cols="50"
+      placeholder="Type your question here, we will reach out to you soon as possible!"
+     ></textarea><br>
+      <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{% endblock sign_up %}
