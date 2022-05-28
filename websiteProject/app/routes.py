@@ -1,5 +1,6 @@
 from unicodedata import name
 from flask_login import current_user
+from sqlalchemy import false
 
 
 from .models import ListingForm, LoginForm, ProfileForm, cartForm, PasswordForm, SearchForm
@@ -150,8 +151,11 @@ def login():
         user = User.query.filter_by(email=form.email.data).first()
         print(user)
         # if user puts wrong info, show error message
-        if user is None or check_password_hash(form.password.data, password):
-            flash('Invalid Username or Password')
+        if user is None:
+            flash('Invalid Username')
+            return redirect(url_for('login'))
+        elif not check_password_hash(form.password.data, password):
+            flash('Invalid Password')
             return redirect(url_for('login'))
         else:
             login_user(user)
